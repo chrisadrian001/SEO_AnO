@@ -1,4 +1,4 @@
-Welcome to the F5 Agility Automation & Orchestration Labs!
+Welcome to SEO AnO Lab 5
 ==========================================================
 
 The purpose of these labs is to give you better understanding of...
