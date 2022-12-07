@@ -1,4 +1,4 @@
-Welcome to SEO AnO Lab 5
+BIG-IP Automation and Orchestration classes 1 and 5
 ==========================================================
 
 The purpose of these labs is to give you better understanding of...
