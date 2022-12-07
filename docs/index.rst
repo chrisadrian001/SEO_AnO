@@ -1,11 +1,7 @@
-Welcome
-=======
+Welcome to the F5 Agility Automation & Orchestration Labs!
+==========================================================
 
-Welcome to the F5 Seattle User Group June 2021
-
-Today's lab will focus on automation basics with BIG-IP.  In the lab we will cover imperative calls to better
-correlate manual configuration actions with automated configuration actions. Then we will move on to declarative
-API calls with Application Services 3 (AS3).
+The purpose of these labs is to give you better understanding of...
 
 
 .. toctree::
@@ -13,5 +9,4 @@ API calls with Application Services 3 (AS3).
    :caption: Contents:
    :glob:
 
-   labinfo.rst
-   intro.rst
+   class*/class*
