@@ -19,5 +19,5 @@ Lab Pathway Links:
 
 .. Note:: No matter the path chosen in the lab, all students have the same result.
 
-.. _Postman: https://clouddocs.f5.com/training/community/automation/html/class05/postmanDeployment/postmanDeployment.html
-.. _Ansible: https://clouddocs.f5.com/training/community/automation/html/class05/ansibleTowerDeployment/ansibleTowerDeployment.html
+.. _Postman: https://seo-ano.readthedocs.io/en/latest/class05/postmanDeployment/postmanDeployment.html
+.. _Ansible: https://seo-ano.readthedocs.io/en/latest/class05/ansibleTowerDeployment/ansibleTowerDeployment.html
