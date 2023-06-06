@@ -35,7 +35,7 @@ In this task, you will Import a Postman Collection & Environment for this lab. P
 
    .. parsed-literal::
 
-      https://raw.githubusercontent.com/f5devcentral/f5-agility-labs-automation/master/docs/class01/files/Class_1.postman_collection.json
+      https://raw.githubusercontent.com/chrisadrian001/SEO_AnO/main/docs/class01/files/Class_1.postman_collection.json
 
    |lab-2-18|
 
@@ -47,7 +47,7 @@ In this task, you will Import a Postman Collection & Environment for this lab. P
 
    .. parsed-literal::
 
-      https://raw.githubusercontent.com/f5devcentral/f5-agility-labs-automation/master/docs/class01/files/Class_1.postman_environment.json
+      https://raw.githubusercontent.com/chrisadrian001/SEO_AnO/main/docs/class01/files/Class_1.postman_environment.json
 
 #. Set your environment to
    ``F5 Programmability: Class 1`` by using the menu at the top right
