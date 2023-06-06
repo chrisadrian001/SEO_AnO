@@ -1,4 +1,4 @@
-Lab 1.6: Build a Basic LTM Config using REST Transactions
+Lab 1.5: Build a Basic LTM Config using REST Transactions
 ---------------------------------------------------------
 
 In this lab, we will build a basic LTM Config using iControlRest Transactions.

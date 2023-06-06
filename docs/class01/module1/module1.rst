@@ -10,7 +10,7 @@ focus on demonstrating an **Imperative** approach to automation.
 .. NOTE:: The Lab Deployment for this lab includes two BIG-IP devices.
    For most of the labs, we will only be configuring the BIG-IP A
    device (management IP has been already been configured in both instances).
-   During certain parts of the lab, we will work on both BIG-IP units in what 
+   During certain parts of the lab, we will work on both BIG-IP units in what
    may feel the incorrect order. This is intentional, in order to make all the
    timings happen correctly.
 
@@ -30,5 +30,5 @@ focus on demonstrating an **Imperative** approach to automation.
 .. toctree::
    :maxdepth: 1
    :glob:
-   
+
    lab*
