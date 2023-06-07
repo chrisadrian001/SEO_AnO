@@ -1,151 +1,91 @@
-Lab 1.4: Basic Network Connectivity
---------------------------------------
+Lab 1.4: Build a Basic LTM Config using REST Transactions
+---------------------------------------------------------
 
-This lab will focus on the configuration of the following items:
+In this lab, we will build a basic LTM Config using iControlRest Transactions.
 
--  L1-3 Networking
+Task 1 - Create a Transaction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   -  Physical Interface Settings
+Transactions are beneficial in cases where you would like to have discrete REST operations to act as a batch operation. As a result, the nature of a transaction is that either all the operations succeed or none of them do (all-or-nothing). This is very useful when we are creating a configuration that is linked together because it allows the rollback of operations in case one fails.  All the commands issued are queued one after the other in the Transaction. We will also review how to change the order of a queued command or remove a single command from the queued list before committing.
 
-   -  L2 Connectivity (**VLAN**, VXLAN, etc.)
+.. NOTE:: Transactions are essential to ensure that an Imperative process is **Atomic** in nature.
 
-   -  L3 Connectivity (**Self IPs, Routing**, etc.)
+.. WARNING:: Transactions have a default timeout of 120 seconds.  Taking longer than the timeout period to execute a transaction will result in the automatic deletion of the Transaction.  **To avoid having to redo the steps in this task, please first read through the steps below and execute each of them promptly.**
 
-We will specifically cover the items in **BOLD** above in the following
-labs. It should be noted that many permutations of the Device Onboarding process exist due to the nature of different organizations. This class is designed to teach enough information so that you can then apply the knowledge learned and help articulate and/or deliver a specific solution for your environment.
+Perform the following steps to complete this task:
 
-The following table and diagram lists the L2-3 network information used to configure connectivity for BIG-IP A:
+#. Expand the ``Lab 1.6 - Build a Basic LTM Config using Transactions`` folder in the Postman collection:
 
-.. list-table::
-   :stub-columns: 1
-   :header-rows: 1
+   |lab-7-1|
 
-   * - **Type**
-     - **Name**
-     - **Details**
-   * - VLAN
-     - External
-     - **Interface**: 1.1
+#. Click the ``Step 1: Create a Transaction`` request. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/transaction`` endpoint with an empty JSON body to create a new transaction.
 
-       **Tag:** 10
+   |lab-7-2|
 
-   * - VLAN
-     - Internal
-     - **Interface**: 1.2
+#. Click the :guilabel:`Send` button to send the request. Examine the response and find the ``transId`` attribute.  Additionally, notice that there are timeouts for both the submission of the Transaction and how long it would take to execute. Please be aware that upon exceeding the ``timeoutSeconds`` period, the ``transId`` will be silently removed:
 
-       **Tag:** 20
+   |lab-7-3|
 
-   * - Self IP
-     - Self-External
-     - **Address**: 10.1.10.7/24
+   The ``transId`` value has been automatically populated for you in the
+   ``bigip_transaction_id`` environment variable:
 
-       **VLAN:** External
+   |lab-7-4|
 
-   * - Self IP
-     - Self-Internal
-     - **Address**: 10.1.20.7/24
+#. Click the ``Step 2: Add to Transaction: Create a HTTP Monitor`` request in the folder. This request is similar to a non-transaction enabled request in terms of the ``POST`` request method, URI, and JSON body. The difference is that a header named ``X-F5-REST-Coordination-Id`` with the value of the ``transId`` attribute is added to the Transaction:
 
-       **VLAN:** Internal
-   * - Route
-     - Default
-     - **Network:** 0.0.0.0/0
+   |lab-7-5|
 
-       **GW:** 10.1.10.1
+#. Click the :guilabel:`Send` button and examine the response.
 
-Task 1 - Create VLANs
-~~~~~~~~~~~~~~~~~~~~~
+#. Examine and click :guilabel:`Send` on **Steps 3-6** in the folder.
 
-.. NOTE:: This lab shows how to configure VLAN tags, but does not deploy tagged interfaces.  To use tagged interfaces, the ``tagged`` attribute needs to have the value ``true``.
+#. Click ``Step 7: View the Transaction Queue``. Examine the request type and URI and click :guilabel:`Send`. This request allows you to see the current list of ordered commands in the Transaction.
 
-Perform the following steps to configure the VLAN objects/resources:
+Task 2 - Modify a Transaction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Expand the ``Lab 1.4 - Basic Network Connectivity`` folder in the Postman collection.
+#. Click the ``Step 8: View Queued Command 4 from Transaction`` request in the folder. Examine the request method and URI. We will ``GET`` command number **4** from the transaction queue.
 
-#. Click the ``Step 1: Create a VLAN`` request in the folder. Click :guilabel:`Body` and examine the JSON request body; the values for creating the Internal VLAN have already been populated.
+   |lab-7-7|
 
-#. Click the :guilabel:`Send` button to create the VLAN
+#. Click the ``Step 9: Change Eval Order 4 -> 1`` request in the folder. Examine the request method, URI, JSON body, then click :guilabel:`Send`. We will PATCH our transaction resource and change the value of the ``evalOrder`` attribute from ``4`` to ``1`` to move to the first position of the transaction queue:
 
-#. **Repeat Step 1**. However, this time, modify the JSON body to create the External VLAN using the parameters shown in the table above. In order to do so you can replace the following:
+   |lab-7-8|
 
-   - ``name``: ``Internal`` > ``External``
-   - ``tag``: ``20`` > ``10``
-   - ``interfaces``: ``1.2`` > ``1.1``
+   .. NOTE:: Requests in the ordered transaction queue must obey the order of operations present in the underlying BIG-IP system.
 
-   |lab-4-6|
+   .. WARNING:: When sending the Header ``X-F5-REST-Coordination-Id``, the system assumes that you want to **ADD** an entry in the transaction queue. You **MUST** remove this header if you want to issue any other transaction queue changes (such as deleting an entry from the queue, changing the order, or committing a transaction). If you fail to remove the header, the system will respond with a ``400`` HTTP error code with the following error text:
 
-#. Click the ``Step 2: Get VLANs`` request in the folder. Click the :guilabel:`Send` button to ``GET`` the VLAN collection. Examine the response to make sure both VLANs have been created.
+      ``"message": "Transaction XXXXX operation .... is not allowed
+      to be added to Transaction."``
 
-Task 2 - Create Self IPs
-~~~~~~~~~~~~~~~~~~~~~~~~
 
-Perform the following steps to configure the Self IP objects/resources:
 
-#. Click the ``Step 3: Create Internal Self IP`` request in the folder. Click :guilabel:`Body` and examine the JSON body; the values for creating the Self-Internal Self IP have already been populated.
+#. Click the ``Step 10: View the Transaction Queue Changes`` request in the folder. Verify that command number ``4`` has moved into position ``1`` and the order of all other commands has been updated accordingly.
 
-   .. Warning:: The JSON body sets the VLAN to ``/Common/External`` on purpose. You will modify this value in the steps below.  Please do not change the value.
+Task 3 - Commit a Transaction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Click the :guilabel:`Send` button to create the Self IP.
+#. Click the ``Step 11: Commit the Transaction`` request in the folder. Examine the request type, URI, and JSON body. We will ``PATCH`` our transaction resource and change the value of the ``state`` attribute to submit the Transaction:
 
-#. Click the ``Step 4: Create External Self IP`` request in the folder and click :guilabel:`Send`.
+   |lab-7-6|
 
-#. Click the ``Step 5: Get Self-Internal Self IP Attributes`` request in the folder and click the :guilabel:`Send` button.  Examine the VLAN settings of the Resource as noted above the Self IP has been assigned to the **wrong** VLAN (intentionally).
+#. Click the :guilabel:`Send` button and examine the response.  The ``state`` may already be ``COMPLETED``. However, it is a good practice to explicitly check for this.
 
-   .. NOTE:: Postman can check the responses for specific values to verify if the result of a request is what it is expected to be. The :guilabel:`Test Results` for this request will show a failure for the ``[Check Value] vlan == /Common/Internal`` value.  This is intentional, and you should continue to the next section.
+#. Click the ``Step 12: View the Transaction Status`` request in the folder and click the :guilabel:`Send` button.  Verify that the ``state`` of the Transaction is ``COMPLETED``.
 
-   |lab-4-1|
+#. You can verify the configuration was created on the BIG-IP device via the BIG-IP A GUI bookmark or at ``https://10.1.1.7``.
 
-Task 3 - Modify Existing Self IP Resource
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Verify that the virtual server works by opening ``http://10.1.10.120`` or using the ``Module 1 VIP01`` bookmark in Chrome web browser
 
-In order to modify an existing object via the REST API, the URI path has to be changed.  In the previous examples, we used a ``POST`` to create Resources under a Collection. Therefore, the URI used was that of the Collection itself. If you wish to update/modify a Resource, you must refer to the Resource directly.
+   |lab-7-9|
 
-For example, the Collection URI for Self IPs is  ``/mgmt/tm/net/self``.
-
-The Resource URI for the ``Self-Internal`` Self IP is ``/mgmt/tm/net/self/~Common~Self-Internal``.  Notice that the BIG-IP
-partition and object name has been added to the Collection URI for the Resource URI.
-
-#. On the open ``Step 5: Get Self-Internal Self IP Attributes`` request change the request method from ``GET`` to ``PATCH``.  The ``PATCH`` method is used to modify the attributes of an existing Resource.
-
-   |lab-4-5|
-
-#. Copy ``(Ctrl + C)`` the entire JSON **RESPONSE** from the previous ``GET`` request.
-
-   |lab-4-2|
-
-#. Paste ``(Ctrl + V)`` the text into JSON **REQUEST** body:
-
-   .. NOTE:: Be sure to highlight any existing text and replace it while pasting.
-
-   |lab-4-3|
-
-#. In the JSON body change the ``vlan`` attribute to ``/Common/Internal`` and click ``Send``:
-
-   |lab-4-4|
-
-#. Click the ``Step 6: Get Self IPs`` item in the collection. Click the ``Send`` button to GET the Self IP collection. Examine the response to make sure both Self IPs have been created and associated with the appropriate vlan.
-
-Task 4 - Create Routes
-~~~~~~~~~~~~~~~~~~~~~~
-
-Perform the following steps to configure the Route object/resource:
-
-#. Before creating the route, we double-check the content of the routing table. Click the ``Step 7: Get Routes`` item in the collection. Click the ``Send`` button to ``GET`` the routes collection. Examine the response to make sure there is no route.
-
-#. Click the ``Step 8: Create a Route`` item in the collection. Click :guilabel:`Body` and examine the JSON body; the values for creating the default route have already been populated.
-
-#. Click the ``Send`` button to create the route.
-
-#. Click the ``Step 9: Get Routes`` item in the collection again. Click the ``Send`` button to ``GET`` the routes collection. Examine the response to make sure the route has been created.
-
-Perform the following steps to save the system configuration before licensing the device:
-
-#. Click the ``Step 10: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration.
-
-.. Warning:: Configuration changes made through the iControl REST API are not saved by default. A configuration save prior to a reload or reboot of the system is required.
-
-.. |lab-4-1| image:: images/lab-4-1.png
-.. |lab-4-2| image:: images/lab-4-2.png
-.. |lab-4-3| image:: images/lab-4-3.png
-.. |lab-4-4| image:: images/lab-4-4.png
-.. |lab-4-5| image:: images/lab-4-5.png
-.. |lab-4-6| image:: images/lab-4-6.png
+.. |lab-7-1| image:: images/lab-7-1.png
+.. |lab-7-2| image:: images/lab-7-2.png
+.. |lab-7-3| image:: images/lab-7-3.png
+.. |lab-7-4| image:: images/lab-7-4.png
+.. |lab-7-5| image:: images/lab-7-5.png
+.. |lab-7-6| image:: images/lab-7-6.png
+.. |lab-7-7| image:: images/lab-7-7.png
+.. |lab-7-8| image:: images/lab-7-8.png
+.. |lab-7-9| image:: images/lab-7-9.png
