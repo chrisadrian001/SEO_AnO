@@ -74,7 +74,7 @@ Perform the following steps to complete this task:
 
    |lab-2-2|
 
-#. Click the ``Step 1: HTTP BASIC Authentication`` item. Click the :guilabel:`Authorization` tab and select ``Basic Auth`` as the Type. Fill in the username and password (``admin/Agility2020!``) and click the :guilabel:`Send` button:
+#. Click the ``Step 1: HTTP BASIC Authentication`` item. Click the :guilabel:`Authorization` tab and select ``Basic Auth`` as the Type. Fill in the username and password (``admin/admin.F5demo.com``) and click the :guilabel:`Send` button:
 
    |lab-2-3|
 
@@ -128,7 +128,7 @@ Perform the following steps to complete this task:
    |lab-2-6|
 
 #. Modify the JSON :guilabel:`Body` and add the required credentials
-   (``admin/Agility2020!``).  Then click the :guilabel:`Send` button.
+   (``admin/admin.F5demo.com``).  Then click the :guilabel:`Send` button.
 
 #. Examine the response status code. If authentication succeeded and a token was generated, the response will have a ``200 OK`` status code. If the status code is ``401`` then check your credentials:
 
