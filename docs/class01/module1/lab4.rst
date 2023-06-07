@@ -30,7 +30,7 @@ Perform the following steps to complete this task:
 
    |lab-7-2|
 
-#. Click ``Step 3: Create LTM Monitor. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/monitor`` endpoint.
+#. Click ``Step 3: Create LTM Monitor``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/monitor`` endpoint.
 
    |lab-4-3|
 
@@ -38,7 +38,7 @@ Perform the following steps to complete this task:
 
    |lab-7-4|
 
-#. Click ``Step 5: Create LTM Pool. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint.
+#. Click ``Step 5: Create LTM Pool``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint.
 
    |lab-4-5|
 
@@ -46,7 +46,7 @@ Perform the following steps to complete this task:
 
    |lab-7-6|
 
-#. Click ``Step 7: Create LTM HTTP Profile (HTTP). Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint.
+#. Click ``Step 7: Create LTM HTTP Profile (HTTP)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint.
 
    |lab-4-7|
 
@@ -54,7 +54,7 @@ Perform the following steps to complete this task:
 
    |lab-7-8|
 
-#. Click ``Step 9: Create LTM Virtual Server (80). Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint.
+#. Click ``Step 9: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint.
 
    |lab-4-9|
 
