@@ -22,53 +22,53 @@ Perform the following steps to complete this task:
 
 #. Expand ``Lab 1.4 - Deploy Application using Imperative API Calls`` folder in the Postman collection:
 
-#. Click ``Step 1: Create LTM Node. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/node`` endpoint.
+#. Click ``Step 1: Create LTM Node``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/node`` endpoint.
 
-   |lab-4-1|
+   |lab-14-1|
 
 #. Click ``Step 2: Get LTM Node`` request in the folder and click the :guilabel:`Send` button.
 
-   |lab-7-2|
+   |lab-14-2|
 
 #. Click ``Step 3: Create LTM Monitor``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/monitor`` endpoint.
 
-   |lab-4-3|
+   |lab-14-3|
 
 #. Click ``Step 4: Get LTM Monitor`` request in the folder and click the :guilabel:`Send` button.
 
-   |lab-7-4|
+   |lab-14-4|
 
 #. Click ``Step 5: Create LTM Pool``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint.
 
-   |lab-4-5|
+   |lab-14-5|
 
 #. Click ``Step 6: Get LTM Pool`` request in the folder and click the :guilabel:`Send` button.
 
-   |lab-7-6|
+   |lab-14-6|
 
 #. Click ``Step 7: Create LTM HTTP Profile (HTTP)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint.
 
-   |lab-4-7|
+   |lab-14-7|
 
 #. Click ``Step 8: Get LTM HTTP Profile (HTTP)`` request in the folder and click the :guilabel:`Send` button.
 
-   |lab-7-8|
+   |lab-14-8|
 
 #. Click ``Step 9: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint.
 
-   |lab-4-9|
+   |lab-14-9|
 
 #. Click ``Step 10: Get LTM Virtual Server (80)`` request in the folder and click the :guilabel:`Send` button.
 
-   |lab-7-10|
+   |lab-14-10|
 
-.. |lab-4-1| image:: images/lab-14-1.png
-.. |lab-4-2| image:: images/lab-14-2.png
-.. |lab-4-3| image:: images/lab-14-3.png
-.. |lab-4-4| image:: images/lab-14-4.png
-.. |lab-4-5| image:: images/lab-14-5.png
-.. |lab-4-6| image:: images/lab-14-6.png
-.. |lab-4-7| image:: images/lab-14-7.png
-.. |lab-4-8| image:: images/lab-14-8.png
-.. |lab-4-9| image:: images/lab-14-9.png
-.. |lab-4-10| image:: images/lab-14-10.png
+.. |lab-14-1| image:: images/lab-14-1.png
+.. |lab-14-2| image:: images/lab-14-2.png
+.. |lab-14-3| image:: images/lab-14-3.png
+.. |lab-14-4| image:: images/lab-14-4.png
+.. |lab-14-5| image:: images/lab-14-5.png
+.. |lab-14-6| image:: images/lab-14-6.png
+.. |lab-14-7| image:: images/lab-14-7.png
+.. |lab-14-8| image:: images/lab-14-8.png
+.. |lab-14-9| image:: images/lab-14-9.png
+.. |lab-14-10| image:: images/lab-14-10.png
