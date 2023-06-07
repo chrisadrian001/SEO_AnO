@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "34dd133c-a93f-4e1d-a6f3-9c75f9f90cbd",
-		"name": "F5 Programmability: Class 1 Copy",
+		"name": "F5 Programmability: Class 1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -1297,7 +1297,7 @@
 			"name": "Lab 1.4 - Deploy Application using Imperative API Calls",
 			"item": [
 				{
-					"name": "Step 1 Create LTM Node",
+					"name": "Step 1 Create - LTM Node",
 					"event": [
 						{
 							"listen": "test",
@@ -1319,22 +1319,16 @@
 					],
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{user}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \r\n    \"name\": \"node1\",\r\n    \"address\": \"10.1.20.11\"\r\n}",
@@ -1362,25 +1356,19 @@
 					"response": []
 				},
 				{
-					"name": "Step 2 Get LTM Nodes",
+					"name": "Step 2 Get - LTM Nodes",
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{user}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
 						"url": {
 							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/node/",
 							"protocol": "https",
@@ -1399,7 +1387,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 3 Create LTM Monitor",
+					"name": "Step 3 Create - LTM Monitor",
 					"event": [
 						{
 							"listen": "test",
@@ -1421,22 +1409,16 @@
 					],
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{user}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Lab1.4_monitor\",\n\t\"partition\": \"Common\",\n\t\"defaultsFrom\": \"/Common/http\",\n\t\"destination\": \"*.*\",\n\t\"interval\": \"10\",\n\t\"timeout\": \"31\",\n\t\"send\":\"GET / HTTP/1.0\\r\\n\\r\\n\",\n    \"recv\":\"\"\n}",
@@ -1465,25 +1447,19 @@
 					"response": []
 				},
 				{
-					"name": "Step 4 Get LTM Monitor",
+					"name": "Step 4 Get - LTM Monitor",
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{user}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
 						"url": {
 							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/monitor/http/",
 							"protocol": "https",
@@ -1503,7 +1479,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 5 Create LTM Pool",
+					"name": "Step 5 Create - LTM Pool",
 					"event": [
 						{
 							"listen": "test",
@@ -1525,22 +1501,16 @@
 					],
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{user}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": \"node1:8080\" \n}",
@@ -1568,25 +1538,19 @@
 					"response": []
 				},
 				{
-					"name": "Step 6 Get LTM Pool",
+					"name": "Step 6 Get - LTM Pool",
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{user}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
 						"url": {
 							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/pool/",
 							"protocol": "https",
@@ -1605,7 +1569,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 7 Create LTM HTTP Profile (HTTP)",
+					"name": "Step 7 Create - LTM HTTP Profile (HTTP)",
 					"event": [
 						{
 							"listen": "test",
@@ -1627,22 +1591,16 @@
 					],
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{user}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Lab1.4_http\",\n\t\"defaultsFrom\": \"/Common/http\",\n\t\"insertXforwardedFor\":\"enabled\"\n}",
@@ -1671,25 +1629,19 @@
 					"response": []
 				},
 				{
-					"name": "Step 8 Get LTM HTTP Profile (HTTP)",
+					"name": "Step 8 Get - LTM HTTP Profile (HTTP)",
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{user}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
 						"url": {
 							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/profile/http/",
 							"protocol": "https",
@@ -1709,7 +1661,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 9 Create LTM Virtual Server (80)",
+					"name": "Step 9 Create - LTM Virtual Server (80)",
 					"event": [
 						{
 							"listen": "test",
@@ -1731,22 +1683,16 @@
 					],
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{user}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{ \r\n    \"name\": \"app.acme.com_vs_80\",\r\n    \"destination\": \"10.1.10.100:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"acme_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
@@ -1774,25 +1720,19 @@
 					"response": []
 				},
 				{
-					"name": "Step 10 Get LTM Virtual Server",
+					"name": "Step 10 Get - LTM Virtual Server",
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{user}}",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
 						"url": {
 							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/virtual/",
 							"protocol": "https",
