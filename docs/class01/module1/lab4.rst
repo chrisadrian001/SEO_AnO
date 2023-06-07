@@ -62,6 +62,11 @@ Perform the following steps to complete this task:
 
    |lab-14-10|
 
+Perform the following steps to save the system configuration before licensing the device:
+
+#. Click the ``Step 11: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration.
+
+
 .. |lab-14-1| image:: images/lab-14-1.png
 .. |lab-14-2| image:: images/lab-14-2.png
 .. |lab-14-3| image:: images/lab-14-3.png
