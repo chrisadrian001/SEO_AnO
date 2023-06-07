@@ -1,7 +1,7 @@
 Lab 1.3: Review/Set Device Settings & Basic Network Connectivity
 -----------------------------------
 
-Devices have already been licensed with all appropriate modules provisioned.  For this lab, we will focus on configuring the necessary infrastructure related settings to complete the Device Onboarding process. The remaining items include (list not exhaustive):
+The BIG-IP device has been licensed with all appropriate modules provisioned.  For this lab, we will focus on configuring the necessary infrastructure related settings to complete the Device Onboarding process. The remaining items include (list not exhaustive):
 
 -  Device Settings
 
@@ -130,9 +130,7 @@ Task 3 - Create VLANs
 
 Perform the following steps to configure the VLAN objects/resources:
 
-#. Expand the ``Lab 1.4 - Basic Network Connectivity`` folder in the Postman collection.
-
-#. Click the ``Step 1: Create a VLAN`` request in the folder. Click :guilabel:`Body` and examine the JSON request body; the values for creating the Internal VLAN have already been populated.
+#. Click the ``Step 8: Create a VLAN`` request in the folder. Click :guilabel:`Body` and examine the JSON request body; the values for creating the Internal VLAN have already been populated.
 
 #. Click the :guilabel:`Send` button to create the VLAN
 
@@ -144,37 +142,37 @@ Perform the following steps to configure the VLAN objects/resources:
 
    |lab-4-6|
 
-#. Click the ``Step 2: Get VLANs`` request in the folder. Click the :guilabel:`Send` button to ``GET`` the VLAN collection. Examine the response to make sure both VLANs have been created.
+#. Click the ``Step 9: Get VLANs`` request in the folder. Click the :guilabel:`Send` button to ``GET`` the VLAN collection. Examine the response to make sure both VLANs have been created.
 
 Task 4 - Create Self IPs
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Perform the following steps to configure the Self IP objects/resources:
 
-#. Click the ``Step 3: Create Internal Self IP`` request in the folder. Click :guilabel:`Body` and examine the JSON body; the values for creating the Self-Internal Self IP have already been populated.
+#. Click the ``Step 10: Create Internal Self IP`` request in the folder. Click :guilabel:`Body` and examine the JSON body; the values for creating the Self-Internal Self IP have already been populated.
 
 #. Click the :guilabel:`Send` button to create the Self IP.
 
-#. Click the ``Step 4: Create External Self IP`` request in the folder and click :guilabel:`Send`.
+#. Click the ``Step 11: Create External Self IP`` request in the folder and click :guilabel:`Send`.
 
-#. Click the ``Step 5: Get Self-Internal Self IP Attributes`` request in the folder and click the :guilabel:`Send` button.
+#. Click the ``Step 12: Get Self IPs`` request in the folder and click the :guilabel:`Send` button.
 
 Task 5 - Create Routes
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Perform the following steps to configure the Route object/resource:
 
-#. Before creating the route, we double-check the content of the routing table. Click the ``Step 7: Get Routes`` item in the collection. Click the ``Send`` button to ``GET`` the routes collection. Examine the response to make sure there is no route.
+#. Before creating the route, we double-check the content of the routing table. Click the ``Step 13: Get Routes`` item in the collection. Click the ``Send`` button to ``GET`` the routes collection. Examine the response to make sure there is no route.
 
-#. Click the ``Step 8: Create a Route`` item in the collection. Click :guilabel:`Body` and examine the JSON body; the values for creating the default route have already been populated.
+#. Click the ``Step 14: Create a Route`` item in the collection. Click :guilabel:`Body` and examine the JSON body; the values for creating the default route have already been populated.
 
 #. Click the ``Send`` button to create the route.
 
-#. Click the ``Step 9: Get Routes`` item in the collection again. Click the ``Send`` button to ``GET`` the routes collection. Examine the response to make sure the route has been created.
+#. Click the ``Step 15: Get Routes`` item in the collection again. Click the ``Send`` button to ``GET`` the routes collection. Examine the response to make sure the route has been created.
 
 Perform the following steps to save the system configuration before licensing the device:
 
-#. Click the ``Step 10: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration.
+#. Click the ``Step 16: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration.
 
 .. Warning:: Configuration changes made through the iControl REST API are not saved by default. A configuration save prior to a reload or reboot of the system is required.
 
