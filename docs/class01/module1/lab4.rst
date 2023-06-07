@@ -62,13 +62,13 @@ Perform the following steps to complete this task:
 
    |lab-7-10|
 
-.. |lab-4-1| image:: images/lab-4-1.png
-.. |lab-4-2| image:: images/lab-4-2.png
-.. |lab-4-3| image:: images/lab-4-3.png
-.. |lab-4-4| image:: images/lab-4-4.png
-.. |lab-4-5| image:: images/lab-4-5.png
-.. |lab-4-6| image:: images/lab-4-6.png
-.. |lab-4-7| image:: images/lab-4-7.png
-.. |lab-4-8| image:: images/lab-4-8.png
-.. |lab-4-9| image:: images/lab-4-9.png
-.. |lab-4-10| image:: images/lab-4-10.png
+.. |lab-4-1| image:: images/lab-14-1.png
+.. |lab-4-2| image:: images/lab-14-2.png
+.. |lab-4-3| image:: images/lab-14-3.png
+.. |lab-4-4| image:: images/lab-14-4.png
+.. |lab-4-5| image:: images/lab-14-5.png
+.. |lab-4-6| image:: images/lab-14-6.png
+.. |lab-4-7| image:: images/lab-14-7.png
+.. |lab-4-8| image:: images/lab-14-8.png
+.. |lab-4-9| image:: images/lab-14-9.png
+.. |lab-4-10| image:: images/lab-14-10.png
