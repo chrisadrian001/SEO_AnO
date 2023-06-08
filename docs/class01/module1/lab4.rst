@@ -57,7 +57,7 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 8: Create LTM HTTP Profile (HTTP)`` again.
 
-#. Notice the response code of 404.  This object already exists and iControl REST is non item-potent, meaning, a POST to an already existing object will fail.
+#. Notice the response code of 404.  This object already exists and iControl REST is non-idempotent, meaning, a POST to an already existing object will fail.
 
 #. Click ``Step 10: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint.
 
