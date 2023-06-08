@@ -78,7 +78,7 @@ Perform the following steps to complete this task:
 
    |lab-2-3|
 
-#. Click the :guilabel:`Headers` tab and examine the HTTP header. Notice that the number of Headers in the Headers tab changed from ``1`` to ``9``. This is because Postman automatically created the HTTP header and updated your request to include it.
+#. Click the :guilabel:`Headers` tab and examine the HTTP header. Notice that the number of Headers in the Headers tab changed from ``1`` to ``10``. This is because Postman automatically created the HTTP header and updated your request to include it.
 
    |lab-2-21|
 

@@ -11,9 +11,9 @@ In this lab, we will explore the API using an interface that is built into TMOS.
 
 #. Open a Remote Desktop session to the Windows Jumphost (``student/automation``), ignore any update warnings.
 
-#. Open Google Chrome and navigate to the following bookmarks under the
-   **Programmability** folder: **BIG-IP A**, and **BIG-IP B**. Bypass
-   any SSL errors that appear and ensure you see the login screen for each bookmark.
+#. Open Google Chrome and navigate to the following bookmark under the
+   **Programmability** folder: **BIG-IP A**. Bypass
+   any SSL errors that appear and ensure you see the login screen for the BIG-IP.
 
    .. WARNING:: Skipping this step will result in errors in subsequent steps
 

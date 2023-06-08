@@ -9,11 +9,11 @@ This introductory class covers the following topics:
 - Introductory to BIG-IP REST (Presentation)
 - Imperative Automation using the F5 BIG-IP iControl REST API
 
-  - Walking to Running with BIG-IP Imperative REST (Module 1)
+  - Introduction to BIG-IP Imperative REST (Module 1)
 
 - Abstracting Services using the App Services 3 Extension
 
-  - Beginners adoption to BIG-IP AS3 (Module 2)
+  - Introduction to BIG-IP AS3 (Module 2)
 
 Expected time to complete: **2 hours**
 
