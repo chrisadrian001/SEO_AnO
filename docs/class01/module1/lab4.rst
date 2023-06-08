@@ -42,7 +42,7 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 5: Get LTM Monitor`` request in the folder and click the :guilabel:`Send` button.
 
-The above API endpoint will return all HTTP monitors.  To return only the monitor created in step 3, you can append the specific HTTP resource to the API endpoint.   ``/mgmt/tm/ltm/monitor/Lab1.4_monitor``
+    .. NOTE:: The above API endpoint will return all HTTP monitors.  To return only the monitor created in step 3, you can append the specific HTTP resource to the API endpoint.   ``/mgmt/tm/ltm/monitor/Lab1.4_monitor``
 
 #. Click ``Step 6: Create LTM Pool``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint. Click the :guilabel:`Send` button.
 
@@ -58,9 +58,9 @@ The above API endpoint will return all HTTP monitors.  To return only the monito
 
 #. Click ``Step 10: Create LTM HTTP Profile (HTTP)`` again. Click the :guilabel:`Send` button.
 
-Notice the response ``409 Conflict`` response code.  This REST object already exists and is non-idempotent, meaning, a POST to this object cannot overwrite the existing configuration.  The PATCH method would need to be used to update this object.
+    .. NOTE:: Notice the response ``409 Conflict`` response code.  This REST object already exists and is non-idempotent, meaning, a POST to this object cannot overwrite the existing configuration.  The PATCH method would need to be used to update this object.
 
-   |lab-14-7|
+    |lab-14-7|
 
 #. Click ``Step 10: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
 
@@ -68,7 +68,7 @@ Notice the response ``409 Conflict`` response code.  This REST object already ex
 
 #. Click ``Step 11: Get LTM Virtual Server (80)`` request in the folder and click the :guilabel:`Send` button.
 
-Perform the following steps to save the system configuration before licensing the device:
+    Perform the following steps to save the system configuration before licensing the device:
 
 #. Click the ``Step 12: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration. Click the :guilabel:`Send` button.
 
