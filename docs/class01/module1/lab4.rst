@@ -78,5 +78,5 @@ Perform the following steps to save the system configuration before licensing th
 .. |lab-14-4| image:: images/lab-14-4.png
 .. |lab-14-5| image:: images/lab-14-5.png
 .. |lab-14-6| image:: images/lab-14-6.png
-.. |lab-14-6| image:: images/lab-14-7.png
-.. |lab-14-6| image:: images/lab-14-8.png
+.. |lab-14-7| image:: images/lab-14-7.png
+.. |lab-14-8| image:: images/lab-14-8.png
