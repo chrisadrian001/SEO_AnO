@@ -1,7 +1,7 @@
 Lab 1.4 - Deploy Application using Imperative API Calls
 ---------------------------------------------------------
 
-In this lab, we will build a basic LTM Config using the iControlRest API.
+In this lab, we will build a basic LTM Config using the iControl Rest API.
 
 Task 1 - Deploy a basic HTTP application Virtual Server and associated components.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -32,7 +32,7 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 3: Create LTM Pool``.
 
-.. NOTE:: Notice this command will fail with a ``400 Bad Request`` because of the missing HTTP monitor object.  Order of operations matter when working with iControl REST API.
+Notice this command will fail with a ``400 Bad Request`` because of the missing HTTP monitor object.  Order of operations matter when working with iControl REST API.
 
    |lab-14-3|
 
@@ -42,7 +42,7 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 5: Get LTM Monitor`` request in the folder and click the :guilabel:`Send` button.
 
-.. NOTE:: The above API endpoint will return all HTTP monitors.  To return only the monitor created in step 3, you can append the specific HTTP resource to the API endpoint.   ``/mgmt/tm/ltm/monitor/Lab1.4_monitor``
+The above API endpoint will return all HTTP monitors.  To return only the monitor created in step 3, you can append the specific HTTP resource to the API endpoint.   ``/mgmt/tm/ltm/monitor/Lab1.4_monitor``
 
 #. Click ``Step 6: Create LTM Pool``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint. Click the :guilabel:`Send` button.
 
@@ -58,7 +58,7 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 10: Create LTM HTTP Profile (HTTP)`` again. Click the :guilabel:`Send` button.
 
-.. NOTE:: Notice the response ``409 Conflict`` response code.  This REST object already exists and is non-idempotent, meaning, a POST to this object cannot overwrite the existing configuration.  The PATCH method would need to be used to update this object.
+Notice the response ``409 Conflict`` response code.  This REST object already exists and is non-idempotent, meaning, a POST to this object cannot overwrite the existing configuration.  The PATCH method would need to be used to update this object.
 
    |lab-14-7|
 
@@ -73,7 +73,7 @@ Perform the following steps to save the system configuration before licensing th
 #. Click the ``Step 12: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration. Click the :guilabel:`Send` button.
 
 .. |lab-14-1| image:: images/lab-14-1.png
-  :scale: 70%
+  :scale: 50%
 .. |lab-14-2| image:: images/lab-14-2.png
 .. |lab-14-3| image:: images/lab-14-3.png
 .. |lab-14-4| image:: images/lab-14-4.png
