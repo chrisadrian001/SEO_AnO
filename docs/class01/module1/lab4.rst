@@ -24,7 +24,7 @@ Perform the following steps to complete this task:
 
    |lab-14-1|
 
-#. Click ``Step 1: Create LTM Node``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/node`` endpoint.
+#. Click ``Step 1: Create LTM Node``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/node`` endpoint. Click the :guilabel:`Send` button.
 
    |lab-14-2|
 
@@ -32,42 +32,45 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 3: Create LTM Pool``.
 
-#. Notice this command will fail because of the missing HTTP monitor object.  Order of operations matter when working with the imperative iControl API.
-
-#. Click ``Step 4: Create LTM Monitor``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/monitor`` endpoint.
+.. NOTE:: Notice this command will fail with a ``400 Bad Request`` because of the missing HTTP monitor object.  Order of operations matter when working with iControl REST API.
 
    |lab-14-3|
 
-#. Click ``Step 5: Get LTM Monitor`` request in the folder and click the :guilabel:`Send` button.
-
-.. NOTE:: The above API endpoint will return all HTTP monitors.  To return only the monitor created in step 3, you can append
-   the specific HTTP resource to the API endpoint.   ``/mgmt/tm/ltm/monitor/Lab1.4_monitor``
-
-#. Click ``Step 6: Create LTM Pool``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint.
+#. Click ``Step 4: Create LTM Monitor``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/monitor`` endpoint. Click the :guilabel:`Send` button.
 
    |lab-14-4|
 
-#. Click ``Step 7: Get LTM Pool`` request in the folder and click the :guilabel:`Send` button.
+#. Click ``Step 5: Get LTM Monitor`` request in the folder and click the :guilabel:`Send` button.
 
-#. Click ``Step 8: Create LTM HTTP Profile (HTTP)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint.
+.. NOTE:: The above API endpoint will return all HTTP monitors.  To return only the monitor created in step 3, you can append the specific HTTP resource to the API endpoint.   ``/mgmt/tm/ltm/monitor/Lab1.4_monitor``
+
+#. Click ``Step 6: Create LTM Pool``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint. Click the :guilabel:`Send` button.
 
    |lab-14-5|
 
-#. Click ``Step 9: Get LTM HTTP Profile (HTTP)`` request in the folder and click the :guilabel:`Send` button.
+#. Click ``Step 7: Get LTM Pool`` request in the folder and click the :guilabel:`Send` button.
 
-#. Click ``Step 8: Create LTM HTTP Profile (HTTP)`` again.
-
-#. Notice the response code of 404.  This object already exists and iControl REST is non-idempotent, meaning, a POST to an already existing object will fail.
-
-#. Click ``Step 10: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint.
+#. Click ``Step 8: Create LTM HTTP Profile (HTTP)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint. Click the :guilabel:`Send` button.
 
    |lab-14-6|
+
+#. Click ``Step 9: Get LTM HTTP Profile (HTTP)`` request in the folder and click the :guilabel:`Send` button.
+
+#. Click ``Step 10: Create LTM HTTP Profile (HTTP)`` again. Click the :guilabel:`Send` button.
+
+.. NOTE:: Notice the response ``409 Conflict`` response code.  This REST object already exists and is non-idempotent, meaning, a POST to this object cannot overwrite the existing configuration.  The PATCH method would need to be used to update this object.
+
+   |lab-14-7|
+
+#. Click ``Step 10: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
+
+   |lab-14-8|
 
 #. Click ``Step 11: Get LTM Virtual Server (80)`` request in the folder and click the :guilabel:`Send` button.
 
 Perform the following steps to save the system configuration before licensing the device:
 
-#. Click the ``Step 12: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration.
+#. Click the ``Step 12: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration. Click the :guilabel:`Send` button.
 
 .. |lab-14-1| image:: images/lab-14-1.png
 .. |lab-14-2| image:: images/lab-14-2.png
@@ -75,3 +78,5 @@ Perform the following steps to save the system configuration before licensing th
 .. |lab-14-4| image:: images/lab-14-4.png
 .. |lab-14-5| image:: images/lab-14-5.png
 .. |lab-14-6| image:: images/lab-14-6.png
+.. |lab-14-6| image:: images/lab-14-7.png
+.. |lab-14-6| image:: images/lab-14-8.png
