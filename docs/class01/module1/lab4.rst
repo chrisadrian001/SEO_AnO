@@ -32,9 +32,9 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 3: Create LTM Pool``.
 
-Notice this command will fail with a ``400 Bad Request`` because of the missing HTTP monitor object.  Order of operations matter when working with iControl REST API.
+    Notice this command will fail with a ``400 Bad Request`` because of the missing HTTP monitor object.  Order of operations matter when working with iControl REST API.
 
-   |lab-14-3|
+    |lab-14-3|
 
 #. Click ``Step 4: Create LTM Monitor``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/monitor`` endpoint. Click the :guilabel:`Send` button.
 
