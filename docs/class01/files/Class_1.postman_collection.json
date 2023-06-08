@@ -1387,7 +1387,66 @@
 					"response": []
 				},
 				{
-					"name": "Step 3 Create - LTM Monitor",
+					"name": "Step 3 Create - LTM Pool",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Pool\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Pool Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": \"node1:8080\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/pool/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"pool",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 4 Create - LTM Monitor",
 					"event": [
 						{
 							"listen": "test",
@@ -1447,7 +1506,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 4 Get - LTM Monitor",
+					"name": "Step 5 Get - LTM Monitor",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -1479,7 +1538,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 5 Create - LTM Pool",
+					"name": "Step 6 Create - LTM Pool",
 					"event": [
 						{
 							"listen": "test",
@@ -1538,7 +1597,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 6 Get - LTM Pool",
+					"name": "Step 7 Get - LTM Pool",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -1569,7 +1628,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 7 Create - LTM HTTP Profile (HTTP)",
+					"name": "Step 8 Create - LTM HTTP Profile (HTTP)",
 					"event": [
 						{
 							"listen": "test",
@@ -1629,7 +1688,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 8 Get - LTM HTTP Profile (HTTP)",
+					"name": "Step 9 Get - LTM HTTP Profile (HTTP)",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -1661,7 +1720,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 9 Create - LTM Virtual Server (80)",
+					"name": "Step 10 Create - LTM Virtual Server (80)",
 					"event": [
 						{
 							"listen": "test",
@@ -1695,7 +1754,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"name\": \"app.acme.com_vs_80\",\r\n    \"destination\": \"10.1.10.100:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"acme_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
+							"raw": "{ \r\n    \"name\": \"Lab1.4_vs_80\",\r\n    \"destination\": \"10.1.10.100:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"Lab1.4_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1720,7 +1779,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 10 Get - LTM Virtual Server",
+					"name": "Step 11 Get - LTM Virtual Server",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -1745,6 +1804,51 @@
 								"ltm",
 								"virtual",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 12: Save config",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"command\": \"run\",\n    \"utilCmdArgs\": \"-c 'tmsh save /sys config'\"\n}"
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/util/bash",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"util",
+								"bash"
 							]
 						}
 					},
