@@ -73,6 +73,7 @@ Perform the following steps to save the system configuration before licensing th
 #. Click the ``Step 12: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration. Click the :guilabel:`Send` button.
 
 .. |lab-14-1| image:: images/lab-14-1.png
+  :scale: 70%
 .. |lab-14-2| image:: images/lab-14-2.png
 .. |lab-14-3| image:: images/lab-14-3.png
 .. |lab-14-4| image:: images/lab-14-4.png
