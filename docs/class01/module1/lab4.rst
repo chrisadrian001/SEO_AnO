@@ -32,7 +32,7 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 3: Create LTM Pool``.
 
-    Notice this command will fail with a ``400 Bad Request`` because of the missing HTTP monitor object.  Order of operations matter when working with iControl REST API.
+    .. NOTE:: Notice this command will fail with a ``400 Bad Request`` because of the missing HTTP monitor object.  Order of operations matter when working with iControl REST API.
 
     |lab-14-3|
 
