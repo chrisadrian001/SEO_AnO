@@ -134,7 +134,7 @@ Perform the following steps to configure the VLAN objects/resources:
 
 #. Click the :guilabel:`Send` button to create the VLAN
 
-#. **Repeat Step 1**. However, this time, modify the JSON body to create the External VLAN using the parameters shown in the table above. In order to do so you can replace the following:
+#. **Repeat Step 8**. However, this time, modify the JSON body to create the External VLAN using the parameters shown in the table above. In order to do so you can replace the following:
 
    - ``name``: ``Internal`` > ``External``
    - ``tag``: ``20`` > ``10``
@@ -172,9 +172,48 @@ Perform the following steps to configure the Route object/resource:
 
 Perform the following steps to save the system configuration before licensing the device:
 
+Task 6 - Save Configuration
+~~~~~~~~~~~~~~~~~~~~~~
+
 #. Click the ``Step 16: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration.
 
 .. Warning:: Configuration changes made through the iControl REST API are not saved by default. A configuration save prior to a reload or reboot of the system is required.
+
+Task 7 - Review Configuration Setup in the UI
+~~~~~~~~~~~~~~~~~~~~~~
+
+In this section, we will use the Traffic Management User Interface (TMUI) to review the changes made to the BIG-IP configuration via the iControl REST API.
+
+#. Open Google Chrome and navigate to the the Programmability folder.
+
+   |lab-3-71|
+
+#. Select the ``BIG-IP A GUI`` link (or navigate to https://10.1.1.7/).
+
+   |lab-3-72|
+
+#. Authenticate to the interface using the default credentials (``admin/admin.F5demo.com``).
+
+#. Review the System settings configuration by navigating to System, Configuration, Device.
+
+   |lab-3-73|
+
+#. Select DNS to review the Lookup Servers and Search Domains.
+
+   |lab-3-74|
+
+#. Repeat the steps above but this time review the configured NTP Timer Server List.
+
+#. Review the Network settings configuration by navigating to Network.
+
+#. Select VLAN, VLAN List to review the configured VLANs.
+
+   |lab-3-75|
+
+#. Repeat the steps above to review the remaining items.
+
+- Self IPs
+- Routes
 
 .. |lab-3-1| image:: images/lab-3-1.png
 .. |lab-3-2| image:: images/lab-3-2.png
@@ -187,3 +226,8 @@ Perform the following steps to save the system configuration before licensing th
 .. |lab-4-4| image:: images/lab-4-4.png
 .. |lab-4-5| image:: images/lab-4-5.png
 .. |lab-4-6| image:: images/lab-4-6.png
+.. |lab-3-71| image:: images/lab-3-71.png
+.. |lab-3-72| image:: images/lab-3-72.png
+.. |lab-3-73| image:: images/lab-3-73.png
+.. |lab-3-74| image:: images/lab-3-74.png
+.. |lab-3-75| image:: images/lab-3-75.png

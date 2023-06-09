@@ -56,7 +56,7 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 9: Get LTM HTTP Profile (HTTP)`` request in the folder and click the :guilabel:`Send` button.
 
-#. Click ``Step 10: Create LTM HTTP Profile (HTTP)`` again. Click the :guilabel:`Send` button.
+#. Click ``Step 8: Create LTM HTTP Profile (HTTP)`` again. Click the :guilabel:`Send` button.
 
     .. NOTE:: Notice the response ``409 Conflict`` response code.  This REST object already exists and is non-idempotent, meaning, a POST to this object cannot overwrite the existing configuration.  The PATCH method would need to be used to update this object.
 
