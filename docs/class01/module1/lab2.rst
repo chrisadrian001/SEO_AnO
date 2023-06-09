@@ -112,7 +112,7 @@ with a unique token for that session, and the consumer then uses that
 token for all subsequent requests. BIG-IP supports token-based authentication that drops down to the underlying authentication subsystems available in TMOS. As a result, the system can be configured to support external authentication providers (Active Directory, RADIUS, TACACS, etc.), and those authentication methods
 can flow through to the REST API. In this task, we will demonstrate TBA using the local authentication database. However, authentication to external providers is fully supported.
 
-.. NOTE:: For more information about external authentication providers see the section titled **About external authentication providers with iControl REST** in the iControl REST API User Guide available at https://devcentral.f5.com/d/icontrolr-rest-api-user-guide-version-1300-241 (v13)
+.. NOTE:: For more information about external authentication providers see the section titled **About external authentication providers with iControl REST** in the iControl REST API User Guide available at https://cdn.f5.com/websites/devcentral.f5.com/downloads/icontrol-rest-api-user-guide-13-0-0-c.pdf (v13)
 
 Perform the following steps to complete this task:
 
