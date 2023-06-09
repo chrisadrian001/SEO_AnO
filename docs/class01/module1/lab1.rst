@@ -46,7 +46,7 @@ In this lab, we will explore the API using an interface that is built into TMOS.
 
 .. NOTE:: If you would like to learn more about the iControl Rest be sure to read
    the **Demystifying iControl REST** article series at
-   https://devcentral.f5.com/wiki/icontrolrest.homepage.ashx
+   https://clouddocs.f5.com/api/icontrol-rest/
 
 .. _Guide: https://agility-2020-programmability-big-ip-rest.readthedocs.io/
 
