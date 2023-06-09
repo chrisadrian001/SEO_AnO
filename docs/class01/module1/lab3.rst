@@ -184,7 +184,7 @@ Task 7 - Review Configuration Setup in the UI
 
 In this section, we will use the Traffic Management User Interface (TMUI) to review the changes made to the BIG-IP configuration via the iControl REST API.
 
-#. Open Google Chrome and navigate to the the Programmability folder.
+#. Open Google Chrome and navigate to the the **Programmability** folder.
 
    |lab-3-71|
 
@@ -194,19 +194,19 @@ In this section, we will use the Traffic Management User Interface (TMUI) to rev
 
 #. Authenticate to the interface using the default credentials (``admin/admin.F5demo.com``).
 
-#. Review the System settings configuration by navigating to System, Configuration, Device.
+#. Review the **System** settings configuration by navigating to **System**, **Configuration**, **Device**.
 
    |lab-3-73|
 
-#. Select DNS to review the Lookup Servers and Search Domains.
+#. Select **DNS** to review the **Lookup Servers** and **Search Domains**.
 
    |lab-3-74|
 
-#. Repeat the steps above but this time review the configured NTP Timer Server List.
+#. Repeat the steps above but this time review the configured NTP **Timer Server List**.
 
-#. Review the Network settings configuration by navigating to Network.
+#. Review the **Network** settings configuration by navigating to **Network**.
 
-#. Select VLAN, VLAN List to review the configured VLANs.
+#. Select **VLAN**, **VLAN List** to review the configured VLANs.
 
    |lab-3-75|
 
