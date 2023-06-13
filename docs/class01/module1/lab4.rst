@@ -8,15 +8,17 @@ Task 1 - Deploy a basic HTTP application Virtual Server and associated component
 
 -  Deploy
 
-   -  LTM Node
+   -  LTM Nodes
 
    -  LTM HTTP Monitor
 
    -  LTM Pool
 
-   -  LTM HTTP Profile
+   -  LTM HTTP Profiles (HTTP/HTTPS)
 
-   -  LTM Virtual Server
+   -  LTM SSL Profile
+
+   -  LTM Virtual Servers (HTTP/HTTPS)
 
 Perform the following steps to complete this task:
 
@@ -109,8 +111,8 @@ In this section we will verify the Virtual Server deployment through the TMUI an
 
    .. NOTE:: This applicaiton was deployed with the default BIG-IP SSL certificates.  Bypass any SSL errors when accessing the application.
 
-   This Concludes Lab 1
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This Concludes Lab 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. |lab-4-1| image:: images/lab-4-1.png
   :scale: 50%
