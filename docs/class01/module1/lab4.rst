@@ -111,6 +111,9 @@ In this section we will verify the Virtual Server deployment through the TMUI an
 
    .. NOTE:: This applicaiton was deployed with the default BIG-IP SSL certificates.  Bypass any SSL errors when accessing the application.
 
+   This Concludes Lab 1
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. |lab-14-1| image:: images/lab-14-1.png
   :scale: 50%
 .. |lab-14-2| image:: images/lab-14-2.png
