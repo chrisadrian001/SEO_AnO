@@ -24,53 +24,71 @@ Perform the following steps to complete this task:
 
    |lab-14-1|
 
-#. Click ``Step 1: Create LTM Node``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/node`` endpoint. Click the :guilabel:`Send` button.
+#. Click ``Step 1: Create LTM Node1``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/node`` endpoint. Click the :guilabel:`Send` button.
 
    |lab-14-2|
 
-#. Click ``Step 2: Get LTM Node`` request in the folder and click the :guilabel:`Send` button.  Examine the node configuration just created.
+#. Click ``Step 2: Create LTM Node2``.
 
-#. Click ``Step 3: Create LTM Pool``.
+#. Click ``Step 3: Get LTM Node`` request in the folder and click the :guilabel:`Send` button.  Examine the node configuration just created.
+
+#. Click ``Step 4: Create LTM Pool``.
 
     .. NOTE:: Notice this command will fail with a ``400 Bad Request`` because of the missing HTTP monitor object.  Order of operations matter when working with iControl REST API.
 
     |lab-14-3|
 
-#. Click ``Step 4: Create LTM Monitor``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/monitor`` endpoint. Click the :guilabel:`Send` button.
+#. Click ``Step 5: Create LTM Monitor``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/monitor`` endpoint. Click the :guilabel:`Send` button.
 
    |lab-14-4|
 
-#. Click ``Step 5: Get LTM Monitor`` request in the folder and click the :guilabel:`Send` button.
+#. Click ``Step 6: Get LTM Monitor`` request in the folder and click the :guilabel:`Send` button.
 
     .. NOTE:: The above API endpoint will return all HTTP monitors.  To return only the monitor created in step 3, you can append the specific HTTP resource to the API endpoint.   ``/mgmt/tm/ltm/monitor/Lab1.4_monitor``
 
-#. Click ``Step 6: Create LTM Pool``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint. Click the :guilabel:`Send` button.
+#. Click ``Step 7: Create LTM Pool``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint. Click the :guilabel:`Send` button.
 
    |lab-14-5|
 
-#. Click ``Step 7: Get LTM Pool`` request in the folder and click the :guilabel:`Send` button.
+#. Click ``Step 8: Get LTM Pool`` request in the folder and click the :guilabel:`Send` button.
 
-#. Click ``Step 8: Create LTM HTTP Profile (HTTP)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint. Click the :guilabel:`Send` button.
+#. Click ``Step 9: Create LTM HTTP Profile (HTTP)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint. Click the :guilabel:`Send` button.
 
    |lab-14-6|
 
-#. Click ``Step 9: Get LTM HTTP Profile (HTTP)`` request in the folder and click the :guilabel:`Send` button.
-
-#. Click ``Step 8: Create LTM HTTP Profile (HTTP)`` again. Click the :guilabel:`Send` button.
+#. Click ``Step 9: Create LTM HTTP Profile (HTTP)`` again. Click the :guilabel:`Send` button.
 
     .. NOTE:: Notice the response ``409 Conflict`` response code.  This REST object already exists and is non-idempotent, meaning, a POST to this object cannot overwrite the existing configuration.  The PATCH method would need to be used to update this object.
 
-    |lab-14-7|
+#. Click ``Step 10: Create LTM HTTP Profile (HTTPS)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint. Click the :guilabel:`Send` button.
 
-#. Click ``Step 10: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
+   |lab-14-7|
+
+#. Click ``Step 11: Get LTM HTTP Profile (HTTP)`` request in the folder and click the :guilabel:`Send` button.
 
    |lab-14-8|
 
-#. Click ``Step 11: Get LTM Virtual Server (80)`` request in the folder and click the :guilabel:`Send` button.
+#. Click ``Step 12: Create LTM SSL Profile ``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/client-ssl/`` endpoint. Click the :guilabel:`Send` button.
+
+   |lab-14-9|
+
+#. Click ``Step 13: Get LTM SSL Profile`` request in the folder and click the :guilabel:`Send` button.
+
+   |lab-14-10|
+
+#. Click ``Step 14: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
+
+   |lab-14-11|
+
+#. Click ``Step 15: Create LTM Virtual Server (443)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
+
+   |lab-14-12|
+
+#. Click ``Step 16: Get LTM Virtual Server `` request in the folder and click the :guilabel:`Send` button.
 
     Perform the following steps to save the system configuration before licensing the device:
 
-#. Click the ``Step 12: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration. Click the :guilabel:`Send` button.
+#. Click the ``Step 17: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration. Click the :guilabel:`Send` button.
 
 .. |lab-14-1| image:: images/lab-14-1.png
   :scale: 50%
@@ -81,3 +99,7 @@ Perform the following steps to complete this task:
 .. |lab-14-6| image:: images/lab-14-6.png
 .. |lab-14-7| image:: images/lab-14-7.png
 .. |lab-14-8| image:: images/lab-14-8.png
+.. |lab-14-9| image:: images/lab-14-9.png
+.. |lab-14-10| image:: images/lab-14-10.png
+.. |lab-14-11| image:: images/lab-14-11.png
+.. |lab-14-12| image:: images/lab-14-12.png
