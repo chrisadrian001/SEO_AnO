@@ -1760,7 +1760,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"name\": \"Lab1.4_vs_80\",\r\n    \"destination\": \"10.1.10.120:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"pool\": \"Lab1.4_pool\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"Lab1.4_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
+							"raw": "{ \r\n    \"name\": \"Lab1.4_vs_80\",\r\n    \"destination\": \"10.1.10.120:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"Lab1.4_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1785,7 +1785,185 @@
 					"response": []
 				},
 				{
-					"name": "Step 11 Get - LTM Virtual Server",
+					"name": "Step 11 Create - LTM HTTP Profile (HTTPS)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Virtual Server 80\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Virtual Server 80 Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Lab1.4_vs_80\",\r\n    \"destination\": \"10.1.10.120:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"Lab1.4_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/virtual/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"virtual",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 12 Create - LTM SSL Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Virtual Server 80\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Virtual Server 80 Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\":\"Lab1.4_client-ssl\",\r\n\t\"key\": \"/Common/default\",\r\n\t\"cert\": \"/Common/default\",\r\n\t\"ciphers\": \"DEFAULT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/profile/client-ssl/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"profile",
+								"client-ssl",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 13 Create - LTM Virtual Server (443)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Virtual Server 80\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Virtual Server 80 Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Lab1.4_vs_80\",\r\n    \"destination\": \"10.1.10.120:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"Lab1.4_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/virtual/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"virtual",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 14 Get - LTM Virtual Server",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -1816,7 +1994,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 12: Save config",
+					"name": "Step 15: Save config",
 					"event": [
 						{
 							"listen": "test",
