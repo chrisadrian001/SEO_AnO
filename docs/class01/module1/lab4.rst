@@ -114,7 +114,7 @@ In this section we will verify the Virtual Server deployment through the TMUI an
    This Concludes Lab 1
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |lab-4-1| image:: images/lab-14-1.png
+.. |lab-4-1| image:: images/lab-4-1.png
   :scale: 50%
 .. |lab-4-2| image:: images/lab-4-2.png
 .. |lab-4-3| image:: images/lab-4-3.png
