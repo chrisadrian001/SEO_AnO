@@ -60,26 +60,27 @@ Perform the following steps to complete this task:
 
     .. NOTE:: Notice the response ``409 Conflict`` response code.  This REST object already exists and is non-idempotent, meaning, a POST to this object cannot overwrite the existing configuration.  The PATCH method would need to be used to update this object.
 
+    |lab-4-7|
+
 #. Click ``Step 10: Create LTM HTTP Profile (HTTPS)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-4-7|
+   |lab-4-8|
 
 #. Click ``Step 11: Get LTM HTTP Profile (HTTP)`` request in the folder and click the :guilabel:`Send` button.
 
 #. Click ``Step 12: Create LTM SSL Profile ``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/client-ssl/`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-4-8|
+   |lab-4-9|
 
 #. Click ``Step 13: Get LTM SSL Profile`` request in the folder and click the :guilabel:`Send` button.
 
-
 #. Click ``Step 14: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-4-9|
+   |lab-4-10|
 
 #. Click ``Step 15: Create LTM Virtual Server (443)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-4-10|
+   |lab-4-11|
 
 #. Click ``Step 16: Get LTM Virtual Server `` request in the folder and click the :guilabel:`Send` button.
 
@@ -94,17 +95,17 @@ In this section we will verify the Virtual Server deployment through the TMUI an
 
 #. Open Google Chrome, navigate to the the **Programmability** folder and select the ``BIG-IP A GUI`` link (or navigate to https://10.1.1.7/).
 
-   |lab-4-11|
+   |lab-4-12|
 
 #. Authenticate to the interface using the default credentials (``admin/admin.F5demo.com``).
 
 #. Review the **Virtual Servers** configured by navigating to **Local Traffic**, **Virtual Servers**.
 
-   |lab-4-12|
+   |lab-4-13|
 
 #. Open Google Chrome, navigate to the the **Programmability** folder and select the ``Module 1 VIP01`` link (or navigate to https://10.1.10.120/).
 
-   |lab-4-13|
+   |lab-4-14|
 
    .. NOTE:: This applicaiton was deployed with the default BIG-IP SSL certificates.  Bypass any SSL errors when accessing the application.
 
