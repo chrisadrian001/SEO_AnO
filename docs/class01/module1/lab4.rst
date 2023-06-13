@@ -90,6 +90,27 @@ Perform the following steps to complete this task:
 
 #. Click the ``Step 17: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration. Click the :guilabel:`Send` button.
 
+Task 2 - Verify and Test Virtual Server Deployment.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this section we will verify the Virtual Server deployment through the TMUI and access the applicaiton using Chrome.
+
+#. Open Google Chrome, navigate to the the **Programmability** folder and select the ``BIG-IP A GUI`` link (or navigate to https://10.1.1.7/).
+
+   |lab-3-71|
+
+#. Authenticate to the interface using the default credentials (``admin/admin.F5demo.com``).
+
+#. Review the **Virtual Servers** configured by navigating to **Local Traffic**, **Virtual Servers**.
+
+   |lab-14-13|
+
+#. Open Google Chrome, navigate to the the **Programmability** folder and select the ``Module 1 VIP01`` link (or navigate to https://10.1.10.120/).
+
+   |lab-14-14|
+
+   .. NOTE:: This applicaiton was deployed with the default BIG-IP SSL certificates.  Bypass any SSL errors when accessing the application.
+
 .. |lab-14-1| image:: images/lab-14-1.png
   :scale: 50%
 .. |lab-14-2| image:: images/lab-14-2.png
