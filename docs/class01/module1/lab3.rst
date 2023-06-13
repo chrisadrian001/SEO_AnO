@@ -113,7 +113,7 @@ Perform the following steps to complete this task:
 
 #. Click the ``Step 5: Set System DNS Settings`` item in the folder. Click :guilabel:`Body`. Review the JSON body to verify the name server IPs ``4.2.2.2`` and ``8.8.8.8`` are listed. Additionally, add a search domain of ``f5.local``. You will modify a JSON array to add a search domain:
 
-   |lab-3-4|
+   |lab-3-2|
 
 #. Click the :guilabel:`Send` button and verify the requested changes were successfully implemented by looking at the response or by sending the ``Step 3: Get System DNS Settings`` request again.
 
@@ -140,7 +140,7 @@ Perform the following steps to configure the VLAN objects/resources:
    - ``tag``: ``20`` > ``10``
    - ``interfaces``: ``1.2`` > ``1.1``
 
-   |lab-4-6|
+   |lab-3-3|
 
 #. Click the ``Step 9: Get VLANs`` request in the folder. Click the :guilabel:`Send` button to ``GET`` the VLAN collection. Examine the response to make sure both VLANs have been created.
 
@@ -186,27 +186,27 @@ In this section, we will use the Traffic Management User Interface (TMUI) to rev
 
 #. Open Google Chrome, navigate to the the **Programmability** folder and select the ``BIG-IP A GUI`` link (or navigate to https://10.1.1.7/).
 
-   |lab-3-71|
+   |lab-3-4|
 
 #. Authenticate to the interface using the default credentials (``admin/admin.F5demo.com``).
 
 #. Review the **System** settings configuration by navigating to **System**, **Configuration**, **Device**.
 
-     |lab-3-72|
+     |lab-3-5|
 
 #. Select **DNS** to review the **Lookup Servers** and **Search Domains**.
 
-   |lab-3-73|
+   |lab-3-6|
 
 #. Repeat the steps above but this time review the configured NTP **Timer Server List**.
 
 #. Review the **Network** settings configuration by navigating to **Network**.
 
-   |lab-3-74|
+   |lab-3-7|
 
 #. Select **Self-IPs** to review the configured Self-IP addresses.
 
-   |lab-3-75|
+   |lab-3-8|
 
 #. Repeat the steps above to review the remaining items.
 
@@ -218,15 +218,7 @@ In this section, we will use the Traffic Management User Interface (TMUI) to rev
 .. |lab-3-3| image:: images/lab-3-3.png
 .. |lab-3-4| image:: images/lab-3-4.png
 .. |lab-3-5| image:: images/lab-3-5.png
-.. |lab-4-1| image:: images/lab-4-1.png
-.. |lab-4-2| image:: images/lab-4-2.png
-.. |lab-4-3| image:: images/lab-4-3.png
-.. |lab-4-4| image:: images/lab-4-4.png
-.. |lab-4-5| image:: images/lab-4-5.png
-.. |lab-4-6| image:: images/lab-4-6.png
-.. |lab-3-71| image:: images/lab-3-71.png
-.. |lab-3-72| image:: images/lab-3-72.png
-.. |lab-3-73| image:: images/lab-3-73.png
-.. |lab-3-74| image:: images/lab-3-74.png
+.. |lab-3-6| image:: images/lab-3-6.png
+.. |lab-3-7| image:: images/lab-3-7.png
    :scale: 50%
-.. |lab-3-75| image:: images/lab-3-75.png
+.. |lab-3-8| image:: images/lab-3-8.png

@@ -22,11 +22,11 @@ Perform the following steps to complete this task:
 
 #. Expand ``Lab 1.4 - Deploy Application using Imperative API Calls`` folder in the Postman collection:
 
-   |lab-14-1|
+   |lab-4-1|
 
 #. Click ``Step 1: Create LTM Node1``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/node`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-14-2|
+   |lab-4-2|
 
 #. Click ``Step 2: Create LTM Node2``.
 
@@ -36,11 +36,11 @@ Perform the following steps to complete this task:
 
     .. NOTE:: Notice this command will fail with a ``400 Bad Request`` because of the missing HTTP monitor object.  Order of operations matter when working with iControl REST API.
 
-    |lab-14-3|
+    |lab-4-3|
 
 #. Click ``Step 5: Create LTM Monitor``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/monitor`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-14-4|
+   |lab-4-4|
 
 #. Click ``Step 6: Get LTM Monitor`` request in the folder and click the :guilabel:`Send` button.
 
@@ -48,13 +48,13 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 7: Create LTM Pool``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-14-5|
+   |lab-4-5|
 
 #. Click ``Step 8: Get LTM Pool`` request in the folder and click the :guilabel:`Send` button.
 
 #. Click ``Step 9: Create LTM HTTP Profile (HTTP)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-14-6|
+   |lab-4-6|
 
 #. Click ``Step 9: Create LTM HTTP Profile (HTTP)`` again. Click the :guilabel:`Send` button.
 
@@ -62,27 +62,27 @@ Perform the following steps to complete this task:
 
 #. Click ``Step 10: Create LTM HTTP Profile (HTTPS)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-14-7|
+   |lab-4-7|
 
 #. Click ``Step 11: Get LTM HTTP Profile (HTTP)`` request in the folder and click the :guilabel:`Send` button.
 
-   |lab-14-8|
+   |lab-4-8|
 
 #. Click ``Step 12: Create LTM SSL Profile ``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/client-ssl/`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-14-9|
+   |lab-4-9|
 
 #. Click ``Step 13: Get LTM SSL Profile`` request in the folder and click the :guilabel:`Send` button.
 
-   |lab-14-10|
+   |lab-4-10|
 
 #. Click ``Step 14: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-14-11|
+   |lab-4-11|
 
 #. Click ``Step 15: Create LTM Virtual Server (443)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
 
-   |lab-14-12|
+   |lab-4-12|
 
 #. Click ``Step 16: Get LTM Virtual Server `` request in the folder and click the :guilabel:`Send` button.
 
@@ -97,33 +97,36 @@ In this section we will verify the Virtual Server deployment through the TMUI an
 
 #. Open Google Chrome, navigate to the the **Programmability** folder and select the ``BIG-IP A GUI`` link (or navigate to https://10.1.1.7/).
 
-   |lab-3-71|
+   |lab-4-13|
 
 #. Authenticate to the interface using the default credentials (``admin/admin.F5demo.com``).
 
 #. Review the **Virtual Servers** configured by navigating to **Local Traffic**, **Virtual Servers**.
 
-   |lab-14-13|
+   |lab-4-14|
 
 #. Open Google Chrome, navigate to the the **Programmability** folder and select the ``Module 1 VIP01`` link (or navigate to https://10.1.10.120/).
 
-   |lab-14-14|
+   |lab-4-15|
 
    .. NOTE:: This applicaiton was deployed with the default BIG-IP SSL certificates.  Bypass any SSL errors when accessing the application.
 
    This Concludes Lab 1
    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |lab-14-1| image:: images/lab-14-1.png
+.. |lab-4-1| image:: images/lab-14-1.png
   :scale: 50%
-.. |lab-14-2| image:: images/lab-14-2.png
-.. |lab-14-3| image:: images/lab-14-3.png
-.. |lab-14-4| image:: images/lab-14-4.png
-.. |lab-14-5| image:: images/lab-14-5.png
-.. |lab-14-6| image:: images/lab-14-6.png
-.. |lab-14-7| image:: images/lab-14-7.png
-.. |lab-14-8| image:: images/lab-14-8.png
-.. |lab-14-9| image:: images/lab-14-9.png
-.. |lab-14-10| image:: images/lab-14-10.png
-.. |lab-14-11| image:: images/lab-14-11.png
-.. |lab-14-12| image:: images/lab-14-12.png
+.. |lab-4-2| image:: images/lab-4-2.png
+.. |lab-4-3| image:: images/lab-4-3.png
+.. |lab-4-4| image:: images/lab-4-4.png
+.. |lab-4-5| image:: images/lab-4-5.png
+.. |lab-4-6| image:: images/lab-4-6.png
+.. |lab-4-7| image:: images/lab-4-7.png
+.. |lab-4-8| image:: images/lab-4-8.png
+.. |lab-4-9| image:: images/lab-4-9.png
+.. |lab-4-10| image:: images/lab-4-10.png
+.. |lab-4-11| image:: images/lab-4-11.png
+.. |lab-4-12| image:: images/lab-4-12.png
+.. |lab-4-13| image:: images/lab-4-13.png
+.. |lab-4-14| image:: images/lab-4-14.png
+.. |lab-4-15| image:: images/lab-4-15.png
