@@ -1396,7 +1396,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"name\": \"node1\",\r\n    \"address\": \"10.1.20.11\"\r\n}",
+							"raw": "{ \r\n    \"name\": \"node2\",\r\n    \"address\": \"10.1.20.12\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1637,7 +1637,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": \"node1:8080\" \n}",
+							"raw": "{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": \"node1:8080\" \n}\n\n{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": [\n                \"node1:8080\",\n                \"node2:8080\"\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
