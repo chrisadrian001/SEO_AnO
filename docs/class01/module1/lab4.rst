@@ -107,9 +107,9 @@ In this section we will verify the Virtual Server deployment through the TMUI an
 
 #. Open Google Chrome, navigate to the the **Programmability** folder and select the ``Module 1 VIP01`` link (or navigate to https://10.1.10.120/).
 
-   |lab-4-14|
-
    .. NOTE:: This applicaiton was deployed with the default BIG-IP SSL certificates.  Bypass any SSL errors when accessing the application.
+
+   |lab-4-14|
 
 This Concludes Lab 1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
