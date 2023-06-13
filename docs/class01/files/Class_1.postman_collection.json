@@ -1760,7 +1760,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"name\": \"Lab1.4_vs_80\",\r\n    \"destination\": \"10.1.10.100:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"Lab1.4_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
+							"raw": "{ \r\n    \"name\": \"Lab1.4_vs_80\",\r\n    \"destination\": \"10.1.10.100:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"pool\": \"Lab1.4_pool\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"Lab1.4_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
