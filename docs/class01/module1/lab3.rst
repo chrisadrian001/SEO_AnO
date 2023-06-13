@@ -228,5 +228,5 @@ In this section, we will use the Traffic Management User Interface (TMUI) to rev
 .. |lab-3-72| image:: images/lab-3-72.png
 .. |lab-3-73| image:: images/lab-3-73.png
 .. |lab-3-74| image:: images/lab-3-74.png
-   :scale: 75%
+   :scale: 50%
 .. |lab-3-75| image:: images/lab-3-75.png
