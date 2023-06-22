@@ -1,151 +1,132 @@
-Lab 1.4: Basic Network Connectivity
---------------------------------------
+Lab 1.4 - Deploy Application using Imperative API Calls
+---------------------------------------------------------
 
-This lab will focus on the configuration of the following items:
+In this lab, we will build a basic LTM Config using the iControl Rest API.
 
--  L1-3 Networking
+Task 1 - Deploy a basic HTTP application Virtual Server and associated components.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   -  Physical Interface Settings
+-  Deploy
 
-   -  L2 Connectivity (**VLAN**, VXLAN, etc.)
+   -  LTM Nodes
 
-   -  L3 Connectivity (**Self IPs, Routing**, etc.)
+   -  LTM HTTP Monitor
 
-We will specifically cover the items in **BOLD** above in the following
-labs. It should be noted that many permutations of the Device Onboarding process exist due to the nature of different organizations. This class is designed to teach enough information so that you can then apply the knowledge learned and help articulate and/or deliver a specific solution for your environment.
+   -  LTM Pool
 
-The following table and diagram lists the L2-3 network information used to configure connectivity for BIG-IP A:
+   -  LTM HTTP Profiles (HTTP/HTTPS)
 
-.. list-table::
-   :stub-columns: 1
-   :header-rows: 1
+   -  LTM SSL Profile
 
-   * - **Type**
-     - **Name**
-     - **Details**
-   * - VLAN
-     - External
-     - **Interface**: 1.1
+   -  LTM Virtual Servers (HTTP/HTTPS)
 
-       **Tag:** 10
+Perform the following steps to complete this task:
 
-   * - VLAN
-     - Internal
-     - **Interface**: 1.2
-
-       **Tag:** 20
-
-   * - Self IP
-     - Self-External
-     - **Address**: 10.1.10.7/24
-
-       **VLAN:** External
-
-   * - Self IP
-     - Self-Internal
-     - **Address**: 10.1.20.7/24
-
-       **VLAN:** Internal
-   * - Route
-     - Default
-     - **Network:** 0.0.0.0/0
-
-       **GW:** 10.1.10.1
-
-Task 1 - Create VLANs
-~~~~~~~~~~~~~~~~~~~~~
-
-.. NOTE:: This lab shows how to configure VLAN tags, but does not deploy tagged interfaces.  To use tagged interfaces, the ``tagged`` attribute needs to have the value ``true``.
-
-Perform the following steps to configure the VLAN objects/resources:
-
-#. Expand the ``Lab 1.4 - Basic Network Connectivity`` folder in the Postman collection.
-
-#. Click the ``Step 1: Create a VLAN`` request in the folder. Click :guilabel:`Body` and examine the JSON request body; the values for creating the Internal VLAN have already been populated.
-
-#. Click the :guilabel:`Send` button to create the VLAN
-
-#. **Repeat Step 1**. However, this time, modify the JSON body to create the External VLAN using the parameters shown in the table above. In order to do so you can replace the following:
-
-   - ``name``: ``Internal`` > ``External``
-   - ``tag``: ``20`` > ``10``
-   - ``interfaces``: ``1.2`` > ``1.1``
-
-   |lab-4-6|
-
-#. Click the ``Step 2: Get VLANs`` request in the folder. Click the :guilabel:`Send` button to ``GET`` the VLAN collection. Examine the response to make sure both VLANs have been created.
-
-Task 2 - Create Self IPs
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Perform the following steps to configure the Self IP objects/resources:
-
-#. Click the ``Step 3: Create Internal Self IP`` request in the folder. Click :guilabel:`Body` and examine the JSON body; the values for creating the Self-Internal Self IP have already been populated.
-
-   .. Warning:: The JSON body sets the VLAN to ``/Common/External`` on purpose. You will modify this value in the steps below.  Please do not change the value.
-
-#. Click the :guilabel:`Send` button to create the Self IP.
-
-#. Click the ``Step 4: Create External Self IP`` request in the folder and click :guilabel:`Send`.
-
-#. Click the ``Step 5: Get Self-Internal Self IP Attributes`` request in the folder and click the :guilabel:`Send` button.  Examine the VLAN settings of the Resource as noted above the Self IP has been assigned to the **wrong** VLAN (intentionally).
-
-   .. NOTE:: Postman can check the responses for specific values to verify if the result of a request is what it is expected to be. The :guilabel:`Test Results` for this request will show a failure for the ``[Check Value] vlan == /Common/Internal`` value.  This is intentional, and you should continue to the next section.
+#. Expand ``Lab 1.4 - Deploy Application using Imperative API Calls`` folder in the Postman collection:
 
    |lab-4-1|
 
-Task 3 - Modify Existing Self IP Resource
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In order to modify an existing object via the REST API, the URI path has to be changed.  In the previous examples, we used a ``POST`` to create Resources under a Collection. Therefore, the URI used was that of the Collection itself. If you wish to update/modify a Resource, you must refer to the Resource directly.
-
-For example, the Collection URI for Self IPs is  ``/mgmt/tm/net/self``.
-
-The Resource URI for the ``Self-Internal`` Self IP is ``/mgmt/tm/net/self/~Common~Self-Internal``.  Notice that the BIG-IP
-partition and object name has been added to the Collection URI for the Resource URI.
-
-#. On the open ``Step 5: Get Self-Internal Self IP Attributes`` request change the request method from ``GET`` to ``PATCH``.  The ``PATCH`` method is used to modify the attributes of an existing Resource.
-
-   |lab-4-5|
-
-#. Copy ``(Ctrl + C)`` the entire JSON **RESPONSE** from the previous ``GET`` request.
+#. Click ``Step 1: Create LTM Node1``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/node`` endpoint. Click the :guilabel:`Send` button.
 
    |lab-4-2|
 
-#. Paste ``(Ctrl + V)`` the text into JSON **REQUEST** body:
+#. Click ``Step 2: Create LTM Node2``.
 
-   .. NOTE:: Be sure to highlight any existing text and replace it while pasting.
+#. Click ``Step 3: Get LTM Node`` request in the folder and click the :guilabel:`Send` button.  Examine the node configuration just created.
 
-   |lab-4-3|
+#. Click ``Step 4: Create LTM Pool``.
 
-#. In the JSON body change the ``vlan`` attribute to ``/Common/Internal`` and click ``Send``:
+    .. NOTE:: Notice this command will fail with a ``400 Bad Request`` because of the missing HTTP monitor object.  Order of operations matter when working with iControl REST API.
+
+    |lab-4-3|
+
+#. Click ``Step 5: Create LTM Monitor``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/monitor`` endpoint. Click the :guilabel:`Send` button.
 
    |lab-4-4|
 
-#. Click the ``Step 6: Get Self IPs`` item in the collection. Click the ``Send`` button to GET the Self IP collection. Examine the response to make sure both Self IPs have been created and associated with the appropriate vlan.
+#. Click ``Step 6: Get LTM Monitor`` request in the folder and click the :guilabel:`Send` button.
 
-Task 4 - Create Routes
-~~~~~~~~~~~~~~~~~~~~~~
+    .. NOTE:: The above API endpoint will return all HTTP monitors.  To return only the monitor created in step 3, you can append the specific HTTP resource to the API endpoint.   ``/mgmt/tm/ltm/monitor/Lab1.4_monitor``
 
-Perform the following steps to configure the Route object/resource:
+#. Click ``Step 7: Create LTM Pool``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/pool`` endpoint. Click the :guilabel:`Send` button.
 
-#. Before creating the route, we double-check the content of the routing table. Click the ``Step 7: Get Routes`` item in the collection. Click the ``Send`` button to ``GET`` the routes collection. Examine the response to make sure there is no route.
+   |lab-4-5|
 
-#. Click the ``Step 8: Create a Route`` item in the collection. Click :guilabel:`Body` and examine the JSON body; the values for creating the default route have already been populated.
+#. Click ``Step 8: Get LTM Pool`` request in the folder and click the :guilabel:`Send` button.
 
-#. Click the ``Send`` button to create the route.
+#. Click ``Step 9: Create LTM HTTP Profile (HTTP)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint. Click the :guilabel:`Send` button.
 
-#. Click the ``Step 9: Get Routes`` item in the collection again. Click the ``Send`` button to ``GET`` the routes collection. Examine the response to make sure the route has been created.
+   |lab-4-6|
 
-Perform the following steps to save the system configuration before licensing the device:
+#. Click ``Step 9: Create LTM HTTP Profile (HTTP)`` **again**. Click the :guilabel:`Send` button.
 
-#. Click the ``Step 10: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration.
+    .. NOTE:: Notice the response ``409 Conflict`` response code.  This REST object already exists and is non-idempotent, meaning, a POST to this object cannot overwrite the existing configuration.  The PATCH method would need to be used to update this object.
 
-.. Warning:: Configuration changes made through the iControl REST API are not saved by default. A configuration save prior to a reload or reboot of the system is required.
+    |lab-4-7|
+
+#. Click ``Step 10: Create LTM HTTP Profile (HTTPS)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/http/`` endpoint. Click the :guilabel:`Send` button.
+
+   |lab-4-8|
+
+#. Click ``Step 11: Get LTM HTTP Profile (HTTP)`` request in the folder and click the :guilabel:`Send` button.
+
+#. Click ``Step 12: Create LTM SSL Profile ``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/profile/client-ssl/`` endpoint. Click the :guilabel:`Send` button.
+
+   |lab-4-9|
+
+#. Click ``Step 13: Get LTM SSL Profile`` request in the folder and click the :guilabel:`Send` button.
+
+#. Click ``Step 14: Create LTM Virtual Server (80)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
+
+   |lab-4-10|
+
+#. Click ``Step 15: Create LTM Virtual Server (443)``. Examine the URL and JSON :guilabel:`Body`. We will send a ``POST`` to the ``/mgmt/tm/ltm/virtual`` endpoint. Click the :guilabel:`Send` button.
+
+   |lab-4-11|
+
+#. Click ``Step 16: Get LTM Virtual Server `` request in the folder and click the :guilabel:`Send` button.
+
+    Perform the following steps to save the system configuration before licensing the device:
+
+#. Click the ``Step 17: Save config`` item in the collection. Click the ``Send`` button to save the BIG-IP configuration. Click the :guilabel:`Send` button.
+
+Task 2 - Verify and Test Virtual Server Deployment.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this section we will verify the Virtual Server deployment through the TMUI and access the applicaiton using Chrome.
+
+#. Open Google Chrome, navigate to the the **Programmability** folder and select the ``BIG-IP A GUI`` link (or navigate to https://10.1.1.7/).
+
+   |lab-4-12|
+
+#. Authenticate to the interface using the default credentials (``admin/admin.F5demo.com``).
+
+#. Review the **Virtual Servers** configured by navigating to **Local Traffic**, **Virtual Servers**.
+
+   |lab-4-13|
+
+#. Open Google Chrome, navigate to the the **Programmability** folder and select the ``Module 1 VIP01`` link (or navigate to https://10.1.10.120/).
+
+   .. NOTE:: This applicaiton was deployed with the default BIG-IP SSL certificates.  Bypass any SSL errors when accessing the application.
+
+   |lab-4-14|
+
+This Concludes Lab 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. |lab-4-1| image:: images/lab-4-1.png
+  :scale: 50%
 .. |lab-4-2| image:: images/lab-4-2.png
 .. |lab-4-3| image:: images/lab-4-3.png
 .. |lab-4-4| image:: images/lab-4-4.png
 .. |lab-4-5| image:: images/lab-4-5.png
 .. |lab-4-6| image:: images/lab-4-6.png
+.. |lab-4-7| image:: images/lab-4-7.png
+.. |lab-4-8| image:: images/lab-4-8.png
+.. |lab-4-9| image:: images/lab-4-9.png
+.. |lab-4-10| image:: images/lab-4-10.png
+.. |lab-4-11| image:: images/lab-4-11.png
+.. |lab-4-12| image:: images/lab-4-12.png
+.. |lab-4-13| image:: images/lab-4-13.png
+  :scale: 50%
+.. |lab-4-14| image:: images/lab-4-14.png

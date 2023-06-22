@@ -6,14 +6,7 @@
 Class 1: Programmability BIG-IP Rest Structure and Concepts Documentation!
 ==========================================================================
 
-This lab was re-authored by Jon Calalang (jmcalalang_) with amazing
-contributions from:
-
-- Chris Adrian
-- Pier-Luc Charbonneau
-- Daniel Edgar (aknot242_)
-
-(Alphabetical)
+This lab is an adaptation of Agility lab "Automation and Orchestration (Class-1_)" and has been re-authored by Chris Adrian and Bret Packard for SE Onboarding.
 
 .. toctree::
    :maxdepth: 1
@@ -26,5 +19,4 @@ contributions from:
    conclusion
    bigipbasics
 
-.. _jmcalalang: https://www.github.com/jmcalalang
-.. _aknot242: https://www.github.com/aknot242
+.. _Class-1: https://clouddocs.f5.com/training/community/automation/html/class01/class01.html

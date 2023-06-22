@@ -11,9 +11,9 @@ In this lab, we will explore the API using an interface that is built into TMOS.
 
 #. Open a Remote Desktop session to the Windows Jumphost (``student/automation``), ignore any update warnings.
 
-#. Open Google Chrome and navigate to the following bookmarks under the 
-   **Programmability** folder: **BIG-IP A**, and **BIG-IP B**. Bypass 
-   any SSL errors that appear and ensure you see the login screen for each bookmark.
+#. Open Google Chrome and navigate to the following bookmark under the
+   **Programmability** folder: **BIG-IP A**. Bypass
+   any SSL errors that appear and ensure you see the login screen for the BIG-IP.
 
    .. WARNING:: Skipping this step will result in errors in subsequent steps
 
@@ -23,7 +23,7 @@ In this lab, we will explore the API using an interface that is built into TMOS.
 
 #. Navigate to the URL ``https://10.1.1.7/mgmt/toc`` (or click the BIG-IP A TOC bookmark). The ``/mgmt/toc`` path in the URL is available on all TMOS versions 11.6 or newer.
 
-#. Authenticate to the interface using the default credentials (``admin/Agility2020!``)
+#. Authenticate to the interface using the default credentials (``admin/admin.F5demo.com``)
 
 #. You will now be presented with a top-level list of various REST resources. At the top of the page, there is a search box |lab-1-2| that can be used to find items on the page. Type ``net`` in the search box and then click on the `net` link under iControl REST Resources:
 
@@ -46,9 +46,9 @@ In this lab, we will explore the API using an interface that is built into TMOS.
 
 .. NOTE:: If you would like to learn more about the iControl Rest be sure to read
    the **Demystifying iControl REST** article series at
-   https://devcentral.f5.com/wiki/icontrolrest.homepage.ashx
+   https://clouddocs.f5.com/api/icontrol-rest/
 
-.. _Guide: https://agility-2020-programmability-big-ip-rest.readthedocs.io/
+.. _Guide: https://seo-ano.readthedocs.io/
 
 .. |lab-1-1| image:: images/lab-1-1.png
    :scale: 75%

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0da53e32-a9ed-4fd6-b36b-a75ac095d729",
+		"_postman_id": "34dd133c-a93f-4e1d-a6f3-9c75f9f90cbd",
 		"name": "F5 Programmability: Class 1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -80,7 +80,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -93,11 +92,18 @@
 									"",
 									"f5_check_response(check_vals);",
 									""
-								]
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableCookies": true
+					},
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
@@ -674,441 +680,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 8: Set root User Password",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"generation\", ",
-									"            \"value\":\"0\",",
-									"            \"op\": \">=\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"oldPassword\":\"Agility2020!\",\n    \"newPassword\":\"\"\n}"
-						},
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/shared/authn/root",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"shared",
-								"authn",
-								"root"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 9: Set admin User Password",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"name\", ",
-									"            \"value\":\"admin\" ",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"password\":\"\",\n    \"shell\":\"bash\"\n}"
-						},
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/auth/user/admin",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"auth",
-								"user",
-								"admin"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 10: Save config",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"command\": \"run\",\n    \"utilCmdArgs\": \"-c 'tmsh save /sys config'\"\n}"
-						},
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/util/bash",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"util",
-								"bash"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 11: License BIG-IP A",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{bigiq_password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"licensePoolName\": \"ve-pool\",\n  \"command\": \"assign\",\n  \"address\": \"{{bigip_a_mgmt}}\",\n  \"user\": \"admin\",\n  \"password\": \"{{bigip_admin_password}}\"\n}"
-						},
-						"url": {
-							"raw": "https://{{bigiq_mgmt}}/mgmt/cm/device/tasks/licensing/pool/member-management",
-							"protocol": "https",
-							"host": [
-								"{{bigiq_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"cm",
-								"device",
-								"tasks",
-								"licensing",
-								"pool",
-								"member-management"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 12: License BIG-IP B",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{bigiq_password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"licensePoolName\": \"ve-pool\",\n  \"command\": \"assign\",\n  \"address\": \"{{bigip_b_mgmt}}\",\n  \"user\": \"admin\",\n  \"password\": \"{{bigip_admin_password}}\"\n}"
-						},
-						"url": {
-							"raw": "https://{{bigiq_mgmt}}/mgmt/cm/device/tasks/licensing/pool/member-management",
-							"protocol": "https",
-							"host": [
-								"{{bigiq_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"cm",
-								"device",
-								"tasks",
-								"licensing",
-								"pool",
-								"member-management"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 13: Provision ASM BIG-IP A",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{bigip_admin_password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "        {\n            \"level\": \"nominal\"\n        }"
-						},
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/sys/provision/asm",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"sys",
-								"provision",
-								"asm"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 14: Provision ASM BIG-IP B",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{bigip_admin_password}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "admin",
-									"type": "string"
-								},
-								{
-									"key": "saveHelperData",
-									"value": true,
-									"type": "boolean"
-								},
-								{
-									"key": "showPassword",
-									"value": false,
-									"type": "boolean"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "        {\n            \"level\": \"nominal\"\n        }"
-						},
-						"url": {
-							"raw": "https://{{bigip_b_mgmt}}/mgmt/tm/sys/provision/asm",
-							"protocol": "https",
-							"host": [
-								"{{bigip_b_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"sys",
-								"provision",
-								"asm"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Lab 1.4 - Basic Network Connectivity",
-			"item": [
-				{
-					"name": "Step 1: Create a VLAN",
+					"name": "Step 8: Create a VLAN",
 					"event": [
 						{
 							"listen": "test",
@@ -1188,7 +760,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 2: Get VLANs",
+					"name": "Step 9: Get VLANs",
 					"event": [
 						{
 							"listen": "test",
@@ -1282,7 +854,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 3: Create Internal Self IP",
+					"name": "Step 10: Create Internal Self IP",
 					"event": [
 						{
 							"listen": "test",
@@ -1327,7 +899,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"name\": \"Self-Internal\",\n   \"partition\": \"Common\",\n   \"address\": \"10.1.20.7/24\",\n   \"floating\": \"disabled\",\n   \"trafficGroup\": \"/Common/traffic-group-local-only\",\n   \"vlan\": \"/Common/External\",\n   \"allowService\": [\n     \"default\"\n   ]\n}"
+							"raw": "{\n   \"name\": \"Self-Internal\",\n   \"partition\": \"Common\",\n   \"address\": \"10.1.20.7/24\",\n   \"floating\": \"disabled\",\n   \"trafficGroup\": \"/Common/traffic-group-local-only\",\n   \"vlan\": \"/Common/Internal\",\n   \"allowService\": [\n     \"default\"\n   ]\n}"
 						},
 						"url": {
 							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/net/self/",
@@ -1347,7 +919,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 4: Create External Self IP",
+					"name": "Step 11: Create External Self IP",
 					"event": [
 						{
 							"listen": "test",
@@ -1411,67 +983,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 5: Get Self-Internal Self IP Attributes",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"name\", ",
-									"            \"value\": \"Self-Internal\"",
-									"        },",
-									"        { ",
-									"            \"path\":\"address\", ",
-									"            \"value\": \"10.1.20.7/24\"",
-									"        },",
-									"        { ",
-									"            \"path\":\"vlan\", ",
-									"            \"value\": \"/Common/Internal\"",
-									"        }        ",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/net/self/~Common~Self-Internal",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"net",
-								"self",
-								"~Common~Self-Internal"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 6: Get Self IPs",
+					"name": "Step 12: Get Self IPs",
 					"event": [
 						{
 							"listen": "test",
@@ -1564,7 +1076,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 7: Get Routes",
+					"name": "Step 13: Get Routes",
 					"event": [
 						{
 							"listen": "test",
@@ -1621,7 +1133,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 8: Create a Route",
+					"name": "Step 14: Create a Route",
 					"event": [
 						{
 							"listen": "test",
@@ -1680,7 +1192,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 9: Get Routes",
+					"name": "Step 15: Get Routes",
 					"event": [
 						{
 							"listen": "test",
@@ -1741,7 +1253,7 @@
 					"response": []
 				},
 				{
-					"name": "Step 10: Save config",
+					"name": "Step 16: Save config",
 					"event": [
 						{
 							"listen": "test",
@@ -1788,46 +1300,52 @@
 			]
 		},
 		{
-			"name": "Lab 1.5 - Build a Basic LTM Config using Transactions",
+			"name": "Lab 1.4 - Deploy Application using Imperative API Calls",
 			"item": [
 				{
-					"name": "Step 1: Create a Transaction",
+					"name": "Step 1 Create - LTM Node1",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var populate_vars = [",
-									"        {name:\"bigip_transaction_id\", value:\"transId\"}",
-									"    ];",
-									"    ",
-									"f5_populate_env_vars(populate_vars);",
-									""
-								]
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Node\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Node Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
 								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \n}"
+							"raw": "{ \r\n    \"name\": \"node1\",\r\n    \"address\": \"10.1.20.11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/transaction",
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/node/",
 							"protocol": "https",
 							"host": [
 								"{{bigip_a_mgmt}}"
@@ -1835,56 +1353,207 @@
 							"path": [
 								"mgmt",
 								"tm",
-								"transaction"
+								"ltm",
+								"node",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Step 2: Add To Transaction: Create a HTTP Monitor",
+					"name": "Step 2 Create - LTM Node2",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"evalOrder\",",
-									"            \"value\":\"1\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Node\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Node Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-REST-Coordination-Id",
-								"value": "{{bigip_transaction_id}}"
-							},
-							{
 								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"Lab1.6_monitor\",\n    \"send\":\"GET / HTTP/1.0\\r\\n\\r\\n\",\n    \"recv\":\"\"\n}"
+							"raw": "{ \r\n    \"name\": \"node2\",\r\n    \"address\": \"10.1.20.12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/monitor/http",
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/node/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"node",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 3 Get - LTM Nodes",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/node/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"node",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 4 Create - LTM Pool",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Pool\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Pool Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": \"node1:8080\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/pool/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"pool",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 5 Create - LTM Monitor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Monitor\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Monitor Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Lab1.4_monitor\",\n\t\"partition\": \"Common\",\n\t\"defaultsFrom\": \"/Common/http\",\n\t\"destination\": \"*.*\",\n\t\"interval\": \"10\",\n\t\"timeout\": \"31\",\n\t\"send\":\"GET / HTTP/1.0\\r\\n\\r\\n\",\n    \"recv\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/monitor/http/",
 							"protocol": "https",
 							"host": [
 								"{{bigip_a_mgmt}}"
@@ -1894,56 +1563,29 @@
 								"tm",
 								"ltm",
 								"monitor",
-								"http"
+								"http",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Step 3: Add to Transaction: Create a Pool",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"evalOrder\",",
-									"            \"value\":\"2\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
+					"name": "Step 6 Get - LTM Monitor",
 					"request": {
-						"method": "POST",
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-REST-Coordination-Id",
-								"value": "{{bigip_transaction_id}}"
-							},
-							{
 								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\":\"Lab1.6_pool\",\n    \"monitor\":\"/Common/Lab1.6_monitor\",\n    \"members\": [\"10.1.20.11:8080\",\"10.1.20.12:8080\"]\n}"
-						},
 						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/pool",
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/monitor/http/",
 							"protocol": "https",
 							"host": [
 								"{{bigip_a_mgmt}}"
@@ -1952,56 +1594,148 @@
 								"mgmt",
 								"tm",
 								"ltm",
-								"pool"
+								"monitor",
+								"http",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Step 4: Add to Transaction: Create a HTTP Profile",
+					"name": "Step 7 Create - LTM Pool",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"evalOrder\",",
-									"            \"value\":\"3\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Pool\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Pool Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-REST-Coordination-Id",
-								"value": "{{bigip_transaction_id}}"
-							},
-							{
 								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"Lab1.6_http\",\n    \"insertXforwardedFor\":\"enabled\",\n    \"serverAgentName\":\"Lab_1.6\"\n}"
+							"raw": "{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": \"node1:8080\" \n}\n\n{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": [\n                \"node1:8080\",\n                \"node2:8080\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/profile/http",
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/pool/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"pool",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 8 Get - LTM Pool",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/pool/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"pool",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 9 Create - LTM HTTP Profile (HTTP)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created HTTP Profile (HTTP)\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"HTTP Profile Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Lab1.4_http\",\n\t\"defaultsFrom\": \"/Common/http\",\n\t\"insertXforwardedFor\":\"enabled\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/profile/http/",
 							"protocol": "https",
 							"host": [
 								"{{bigip_a_mgmt}}"
@@ -2011,56 +1745,57 @@
 								"tm",
 								"ltm",
 								"profile",
-								"http"
+								"http",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Step 5: Add to Transaction: Create a TCP Profile",
+					"name": "Step 10 Create - LTM HTTP Profile (HTTPS)",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"evalOrder\",",
-									"            \"value\":\"4\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Virtual Server 80\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Virtual Server 80 Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-REST-Coordination-Id",
-								"value": "{{bigip_transaction_id}}"
-							},
-							{
 								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"Lab1.6_tcp_clientside\",\n    \"nagle\":\"disabled\",\n    \"sendBufferSize\":\"16000\"\n}"
+							"raw": "{\r\n\t\"name\": \"Lab1.4_https\",\r\n\t\"defaultsFrom\": \"/Common/http\",\r\n\t\"insertXforwardedFor\":\"enabled\",\r\n\t\"hsts\": { \"mode\": \"enabled\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/profile/tcp",
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/profile/http/",
 							"protocol": "https",
 							"host": [
 								"{{bigip_a_mgmt}}"
@@ -2070,29 +1805,294 @@
 								"tm",
 								"ltm",
 								"profile",
-								"tcp"
+								"http",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Step 6: Add to Transaction: Create a Virtual Server",
+					"name": "Step 11 Get - LTM HTTP Profile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/profile/http/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"profile",
+								"http",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 12 Create - LTM SSL Profile",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"evalOrder\",",
-									"            \"value\":\"5\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Virtual Server 80\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Virtual Server 80 Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"name\":\"Lab1.4_client-ssl\",\r\n\t\"key\": \"/Common/default.key\",\r\n\t\"cert\": \"/Common/default.crt\",\r\n\t\"ciphers\": \"DEFAULT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/profile/client-ssl/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"profile",
+								"client-ssl",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 13 Get - LTM SSL Profile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/profile/client-ssl/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"profile",
+								"client-ssl",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 14 Create - LTM Virtual Server (80)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Virtual Server 80\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Virtual Server 80 Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Lab1.4_vs_80\",\r\n    \"destination\": \"10.1.10.120:80\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"Lab1.4_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}] }, \r\n    \"rules\": [\"_sys_https_redirect\"],\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/virtual/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"virtual",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 15 Create - LTM Virtual Server (443)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (responseCode.code === 200) {\r",
+									"    pm.collectionVariables.set('PRIOR_RESPONSE', 'OK');\r",
+									"    pm.test(\"Created Virtual Server 80\", function () {\r",
+									"        pm.response.to.have.status(200);\r",
+									"    });\r",
+									"} else\r",
+									"    pm.test(\"Virtual Server 80 Exists\", function () {\r",
+									"        pm.response.to.have.status(409);\r",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"name\": \"Lab1.4_vs_443\",\r\n    \"destination\": \"10.1.10.120:443\",\r\n    \"mask\": \"255.255.255.255\",\r\n    \"pool\": \"Lab1.4_pool\",\r\n    \"profilesReference\": {\"items\": [ {\"context\": \"all\", \"name\": \"Lab1.4_http\"}, {\"context\": \"all\", \"name\": \"f5-tcp-progressive\"}, \r\n        {\"context\": \"clientside\", \"name\": \"Lab1.4_client-ssl\"}] },\r\n    \"sourceAddressTranslation\": {\"type\": \"automap\"}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/virtual/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"virtual",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 16 Get - LTM Virtual Server",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-F5-Auth-Token",
+								"value": "{{bigip_a_auth_token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/virtual/",
+							"protocol": "https",
+							"host": [
+								"{{bigip_a_mgmt}}"
+							],
+							"path": [
+								"mgmt",
+								"tm",
+								"ltm",
+								"virtual",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Step 17: Save config",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -2102,24 +2102,20 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-REST-Coordination-Id",
-								"value": "{{bigip_transaction_id}}"
-							},
-							{
 								"key": "X-F5-Auth-Token",
 								"value": "{{bigip_a_auth_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"Lab1.6_vs\",\n    \"destination\":\"10.1.10.120:80\",\n    \"ipProtocol\":\"tcp\",\n    \"pool\":\"Lab1.6_pool\",\n    \"sourceAddressTranslation\": { \"type\":\"automap\" },\n    \"profiles\": [\n        { \"name\":\"/Common/Lab1.6_tcp_clientside\", \"context\":\"clientside\" },\n        { \"name\":\"/Common/tcp-wan-optimized\", \"context\":\"serverside\" },\n        \"/Common/Lab1.6_http\"\n    ]\n}"
+							"raw": "{\n    \"command\": \"run\",\n    \"utilCmdArgs\": \"-c 'tmsh save /sys config'\"\n}"
 						},
 						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/ltm/virtual",
+							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/util/bash",
 							"protocol": "https",
 							"host": [
 								"{{bigip_a_mgmt}}"
@@ -2127,328 +2123,8 @@
 							"path": [
 								"mgmt",
 								"tm",
-								"ltm",
-								"virtual"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 7: View the Transaction Queue",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"items\",",
-									"            \"value\":\"5\",",
-									"            \"op\":\"length\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
-							}
-						],
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/transaction/{{bigip_transaction_id}}/commands",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"transaction",
-								"{{bigip_transaction_id}}",
-								"commands"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 8: View Queued Command 4 from Transaction",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"evalOrder\",",
-									"            \"value\":\"4\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
-							}
-						],
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/transaction/{{bigip_transaction_id}}/commands/4",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"transaction",
-								"{{bigip_transaction_id}}",
-								"commands",
-								"4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 9: Change Eval Order 4 -> 1",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"evalOrder\",",
-									"            \"value\":\"1\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r   \"evalOrder\": 1\r}"
-						},
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/transaction/{{bigip_transaction_id}}/commands/4",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"transaction",
-								"{{bigip_transaction_id}}",
-								"commands",
-								"4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 10: View the Transaction Queue Changes",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"items\",",
-									"            \"value\":\"5\",",
-									"            \"op\":\"length\"",
-									"        },",
-									"        {",
-									"            \"path\":\"items.0.uri\",",
-									"            \"value\":\"https://localhost/mgmt/tm/ltm/profile/tcp\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
-							}
-						],
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/transaction/{{bigip_transaction_id}}/commands",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"transaction",
-								"{{bigip_transaction_id}}",
-								"commands"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 11: Commit the Transaction",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"kind\",",
-									"            \"value\":\"tm:transactionstate\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"state\":\"VALIDATING\"\n}"
-						},
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/transaction/{{bigip_transaction_id}}",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"transaction",
-								"{{bigip_transaction_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Step 12: View the Transaction Status",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
-									"",
-									"var check_vals = [",
-									"        { ",
-									"            \"path\":\"state\",",
-									"            \"value\":\"COMPLETED\"",
-									"        }",
-									"    ];",
-									"",
-									"f5_check_response(check_vals);"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-F5-Auth-Token",
-								"value": "{{bigip_a_auth_token}}"
-							}
-						],
-						"url": {
-							"raw": "https://{{bigip_a_mgmt}}/mgmt/tm/transaction/{{bigip_transaction_id}}",
-							"protocol": "https",
-							"host": [
-								"{{bigip_a_mgmt}}"
-							],
-							"path": [
-								"mgmt",
-								"tm",
-								"transaction",
-								"{{bigip_transaction_id}}"
+								"util",
+								"bash"
 							]
 						}
 					},

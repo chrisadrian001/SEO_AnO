@@ -74,11 +74,11 @@ Perform the following steps to complete this task:
 
    |lab-2-2|
 
-#. Click the ``Step 1: HTTP BASIC Authentication`` item. Click the :guilabel:`Authorization` tab and select ``Basic Auth`` as the Type. Fill in the username and password (``admin/Agility2020!``) and click the :guilabel:`Send` button:
+#. Click the ``Step 1: HTTP BASIC Authentication`` item. Click the :guilabel:`Authorization` tab and select ``Basic Auth`` as the Type. Fill in the username and password (``admin/admin.F5demo.com``) and click the :guilabel:`Send` button:
 
    |lab-2-3|
 
-#. Click the :guilabel:`Headers` tab and examine the HTTP header. Notice that the number of Headers in the Headers tab changed from ``1`` to ``9``. This is because Postman automatically created the HTTP header and updated your request to include it.
+#. Click the :guilabel:`Headers` tab and examine the HTTP header. Notice that the number of Headers in the Headers tab changed from ``1`` to ``10``. This is because Postman automatically created the HTTP header and updated your request to include it.
 
    |lab-2-21|
 
@@ -112,7 +112,7 @@ with a unique token for that session, and the consumer then uses that
 token for all subsequent requests. BIG-IP supports token-based authentication that drops down to the underlying authentication subsystems available in TMOS. As a result, the system can be configured to support external authentication providers (Active Directory, RADIUS, TACACS, etc.), and those authentication methods
 can flow through to the REST API. In this task, we will demonstrate TBA using the local authentication database. However, authentication to external providers is fully supported.
 
-.. NOTE:: For more information about external authentication providers see the section titled **About external authentication providers with iControl REST** in the iControl REST API User Guide available at https://devcentral.f5.com/d/icontrolr-rest-api-user-guide-version-1300-241 (v13)
+.. NOTE:: For more information about external authentication providers see the section titled **About external authentication providers with iControl REST** in the iControl REST API User Guide available at https://cdn.f5.com/websites/devcentral.f5.com/downloads/icontrol-rest-api-user-guide-13-0-0-c.pdf (v13)
 
 Perform the following steps to complete this task:
 
@@ -128,7 +128,7 @@ Perform the following steps to complete this task:
    |lab-2-6|
 
 #. Modify the JSON :guilabel:`Body` and add the required credentials
-   (``admin/Agility2020!``).  Then click the :guilabel:`Send` button.
+   (``admin/admin.F5demo.com``).  Then click the :guilabel:`Send` button.
 
 #. Examine the response status code. If authentication succeeded and a token was generated, the response will have a ``200 OK`` status code. If the status code is ``401`` then check your credentials:
 

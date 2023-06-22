@@ -16,13 +16,12 @@ Lab Topology
 
   - Docker
 
-    - NGiNX
+    - NGINX
     - Juice Shop
     - Hashicorp Consul
     - GitLab
 
-- 2 x BIG-IP
-- 1 x BIG-IQ Centralized Manager
+- 1 x BIG-IP
 
 Network Addressing
 ------------------
@@ -57,29 +56,14 @@ components:
        **Internal:** NA
      - admin/Agility2020!
 
-   * - BIG-IQ v7.0 CM
-     - 10.1.1.4
-     - **External:** 10.1.10.4
-       **Internal:** 10.1.20.4
-     - admin/MasterPassphrase123!
-
    * - BIGIP01 v14.1.0.3-0.0.6
      - 10.1.1.7
      - **External:** 10.1.10.7
        **Internal:** 10.1.20.7
        **External Float** 10.1.10.100
        **Internal Float** 10.1.20.100
-     - admin/Agility2020!
-       root/Agility2020!
-
-   * - BIGIP02 v14.1.0.3-0.0.6
-     - 10.1.1.6
-     - **External:** 10.1.10.6
-       **Internal:** 10.1.20.6
-       **External Float** 10.1.10.100
-       **Internal Float** 10.1.20.100
-     - admin/Agility2020!
-       root/Agility2020!
+     - admin/admin.F5demo.com
+       root/default.F5demo.com
 
 .. note:: In order for Postman to store objects dynamically
    f5-postman-workflows_ have been installed on the jumphost, this is an
