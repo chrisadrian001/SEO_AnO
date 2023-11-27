@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "34dd133c-a93f-4e1d-a6f3-9c75f9f90cbd",
+		"_postman_id": "eb515f2a-7c3b-40d9-b769-24ba6af44cdb",
 		"name": "F5 Programmability: Class 1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1637,7 +1637,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": \"node1:8080\" \n}\n\n{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": [\n                \"node1:8080\",\n                \"node2:8080\"\n    ]\n}",
+							"raw": "{\n    \"name\": \"Lab1.4_pool\",\n    \"monitor\": \"Lab1.4_monitor\",\n    \"members\": [\n                \"node1:8080\",\n                \"node2:8080\"\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
