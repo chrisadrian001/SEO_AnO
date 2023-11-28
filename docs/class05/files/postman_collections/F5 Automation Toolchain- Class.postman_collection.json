@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "690dc31b-4cfb-4053-83a1-1c620f9540bf",
+		"_postman_id": "f75da550-365a-46ed-b9f3-1a08369f4986",
 		"name": "F5 Automation Toolchain: Class",
 		"description": "This class is focused on highlighting the F5 Automation Toolchain objects and their specific uses.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -15,7 +15,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "766bb157-29e5-4539-9cd6-01b6b08ab5cb",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -64,7 +63,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "85b2f12c-366b-42d6-93c1-ce808473ddbc",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -121,7 +119,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "766bb157-29e5-4539-9cd6-01b6b08ab5cb",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -170,7 +167,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "85b2f12c-366b-42d6-93c1-ce808473ddbc",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -221,8 +217,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Module 2 - DO and BIG-IP",
@@ -233,7 +228,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5e098299-9d1c-4d54-b189-b8d35751507c",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -285,7 +279,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -305,7 +298,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
 								"exec": [
 									"// Create the value for the Content-Range header based on the file size of the RPM",
 									"// https://devcentral.f5.com/articles/demystifying-icontrol-rest-part-5-transferring-files",
@@ -364,7 +356,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -427,7 +418,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2cfb16a5-d7b6-4580-9428-93f10b49d6ad",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -480,7 +470,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72146941-5edf-430b-b687-8e6c3e0b5ecd",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -535,7 +524,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
 								"exec": [
 									""
 								],
@@ -545,7 +533,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
 								"exec": [
 									""
 								],
@@ -592,7 +579,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5e098299-9d1c-4d54-b189-b8d35751507c",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -644,7 +630,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -664,7 +649,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
 								"exec": [
 									"// Create the value for the Content-Range header based on the file size of the RPM",
 									"// https://devcentral.f5.com/articles/demystifying-icontrol-rest-part-5-transferring-files",
@@ -723,7 +707,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -786,7 +769,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2cfb16a5-d7b6-4580-9428-93f10b49d6ad",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -839,7 +821,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72146941-5edf-430b-b687-8e6c3e0b5ecd",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -894,7 +875,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
 								"exec": [
 									""
 								],
@@ -904,7 +884,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
 								"exec": [
 									""
 								],
@@ -950,7 +929,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "6d75e112-93b6-45bb-b6f6-3a70d6724a0a",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -960,15 +938,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "16cc20b4-c98c-4913-8670-65caacab136c",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Module 3 - AS3 and BIG-IP",
@@ -979,7 +955,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5e098299-9d1c-4d54-b189-b8d35751507c",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1031,7 +1006,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1051,7 +1025,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
 								"exec": [
 									"// Create the value for the Content-Range header based on the file size of the RPM",
 									"// https://devcentral.f5.com/articles/demystifying-icontrol-rest-part-5-transferring-files",
@@ -1110,7 +1083,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1173,7 +1145,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2cfb16a5-d7b6-4580-9428-93f10b49d6ad",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1226,7 +1197,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72146941-5edf-430b-b687-8e6c3e0b5ecd",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1283,7 +1253,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
 								"exec": [
 									""
 								],
@@ -1328,7 +1297,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "6d75e112-93b6-45bb-b6f6-3a70d6724a0a",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1338,15 +1306,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "16cc20b4-c98c-4913-8670-65caacab136c",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Module 4 - TS and BIG-IP",
@@ -1357,7 +1323,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5e098299-9d1c-4d54-b189-b8d35751507c",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1409,7 +1374,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "bb38c6e9-0658-458c-be36-3f95d74c9a1c",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1429,7 +1393,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ec269764-4137-4028-b375-4e6471b42ff9",
 								"exec": [
 									"// Create the value for the Content-Range header based on the file size of the RPM",
 									"// https://devcentral.f5.com/articles/demystifying-icontrol-rest-part-5-transferring-files",
@@ -1488,7 +1451,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1551,7 +1513,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2cfb16a5-d7b6-4580-9428-93f10b49d6ad",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1604,7 +1565,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72146941-5edf-430b-b687-8e6c3e0b5ecd",
 								"exec": [
 									"eval(postman.getGlobalVariable(\"_f5_workflow_functions\"));",
 									"",
@@ -1661,7 +1621,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a4da1ae5-cea8-48aa-b803-b45a0086508a",
 								"exec": [
 									""
 								],
@@ -1706,7 +1665,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "6d75e112-93b6-45bb-b6f6-3a70d6724a0a",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1716,15 +1674,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "16cc20b4-c98c-4913-8670-65caacab136c",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Ansible Tower",
@@ -1738,7 +1694,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "3a70e9a7-2a95-4e10-97ad-55562345fa99",
 										"exec": [
 											"var jsonData = JSON.parse(responseBody);",
 											"postman.setEnvironmentVariable(\"tower_project_id\", jsonData.id);"
@@ -1806,7 +1761,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "3a70e9a7-2a95-4e10-97ad-55562345fa99",
 										"exec": [
 											"var jsonData = JSON.parse(responseBody);",
 											"postman.setEnvironmentVariable(\"tower_project_id\", jsonData.id);"
@@ -1874,7 +1828,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "9892b225-34ef-490e-ad59-0d3b11c1bb9e",
 										"exec": [
 											"var jsonData = JSON.parse(responseBody);",
 											"postman.setEnvironmentVariable(\"tower_inventory_id\", jsonData.id);"
@@ -1942,7 +1895,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "14a3c387-8f9e-49a8-b991-0cfa001c7652",
 										"exec": [
 											"var jsonData = JSON.parse(responseBody);",
 											"postman.setEnvironmentVariable(\"tower_host_id\", jsonData.id);"
@@ -2010,7 +1962,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f486c417-90df-42c0-802c-519a1be4d6ec",
 										"exec": [
 											"var jsonData = JSON.parse(responseBody);",
 											"postman.setEnvironmentVariable(\"tower_viewtemplate_id\", jsonData.id);",
@@ -2079,7 +2030,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f486c417-90df-42c0-802c-519a1be4d6ec",
 										"exec": [
 											"var jsonData = JSON.parse(responseBody);",
 											"postman.setEnvironmentVariable(\"tower_viewtemplate_id\", jsonData.id);",
@@ -2148,7 +2098,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f486c417-90df-42c0-802c-519a1be4d6ec",
 										"exec": [
 											"var jsonData = JSON.parse(responseBody);",
 											"postman.setEnvironmentVariable(\"tower_viewtemplate_id\", jsonData.id);",
@@ -2217,7 +2166,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f486c417-90df-42c0-802c-519a1be4d6ec",
 										"exec": [
 											"var jsonData = JSON.parse(responseBody);",
 											"postman.setEnvironmentVariable(\"tower_viewtemplate_id\", jsonData.id);",
@@ -2286,7 +2234,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f486c417-90df-42c0-802c-519a1be4d6ec",
 										"exec": [
 											"var jsonData = JSON.parse(responseBody);",
 											"postman.setEnvironmentVariable(\"tower_viewtemplate_id\", jsonData.id);",
@@ -2349,12 +2296,9 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Consul Services",
@@ -2464,19 +2408,15 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "952142f4-00a7-41bb-9464-70022f333574",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -2486,13 +2426,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "b6aca7a9-f42f-4583-9b84-1a231428be63",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
